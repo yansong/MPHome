@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MPBrowseViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    MPBrowseViewController *browseViewController = [MPBrowseViewController new];
+    [self.window setRootViewController:browseViewController];
+    self.window.backgroundColor = [UIColor colorWithRed:0xfa / 255 green:0xfa / 255 blue:0xfa / 255 alpha:1.0];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
