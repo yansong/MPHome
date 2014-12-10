@@ -6,12 +6,22 @@ PODS:
   - pop (1.0.7)
 
 DEPENDENCIES:
-  - AsyncDisplayKit
+  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, branch `master`)
   - LoremIpsum (~> 1.0)
   - pop (~> 1.0)
 
+EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: master
+    :git: https://github.com/facebook/AsyncDisplayKit.git
+
+CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :commit: d8c1d71f244c4880c310bf42545c6491690174df
+    :git: https://github.com/facebook/AsyncDisplayKit.git
+
 SPEC CHECKSUMS:
-  AsyncDisplayKit: 1bbf78b78795370cc191b15ad7755683c32cc927
+  AsyncDisplayKit: 32535beafd034dc745673055ed3535fed97bb6f0
   LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
 

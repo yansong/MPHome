@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MPBrowseViewController : UITableViewController
+@interface MPBrowseViewController : UIViewController
 
 @end
