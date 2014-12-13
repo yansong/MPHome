@@ -10,10 +10,11 @@
 #import "MPCellNode.h"
 #import "MPDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import "MPDetailViewController.h"
 
 static const NSInteger kInitialCount = 20;
 
-@interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate>
+@interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
 {
     ASTableView *_tableView;
     NSMutableArray *_masterpieces;
@@ -32,6 +33,7 @@ static const NSInteger kInitialCount = 20;
     
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.backgroundColor = [UIColor colorWithRed:0xe0 /255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     _tableView.asyncDataSource = self;
     _tableView.asyncDelegate = self;
     
@@ -58,6 +60,20 @@ static const NSInteger kInitialCount = 20;
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
     MPCellNode *node = [[MPCellNode alloc]initWithArtwork:_masterpieces[indexPath.row]];
     return node;
+}
+
+#pragma mark - UITablevieDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"row %d selected", indexPath.row);
+    MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:@"1"];
+    detailView.delegate = self;
+    
+    [self presentViewController:detailView animated:NO completion:NULL];
+}
+
+#pragma mark - DetailViewControllerDelegate
+- (void)didDismissDetailViewController {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

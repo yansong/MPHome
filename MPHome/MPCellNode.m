@@ -14,6 +14,8 @@
     Artwork *_artwork;
     ASNetworkImageNode *_imageNode;
     ASTextNode *_textNode;
+    
+    CGSize _cellSize;
 }
 @end
 
@@ -25,41 +27,44 @@
     
     _artwork = artwork;
     _imageNode = [[ASNetworkImageNode alloc]init];
-    _imageNode.backgroundColor = [UIColor purpleColor];
+    _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
+
     _imageNode.URL = [NSURL URLWithString:artwork.imageUrlString];
     NSLog(@"Fetching image from %@", artwork.imageUrlString);
     [self addSubnode:_imageNode];
     
     _textNode = [[ASTextNode alloc]init];
     NSLog(@"title is %@", artwork.name);
-    _textNode.attributedString = [[NSAttributedString alloc]initWithString:artwork.name attributes:[self textStyle]];
+    _textNode.attributedString = [self formattedTextFromName:artwork.name Artist:artwork.artist];
+    _textNode.backgroundColor = [UIColor whiteColor];
     [self addSubnode:_textNode];
     return self;
 }
 
-- (NSDictionary *)textStyle {
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:12.0f];
+- (NSAttributedString *)formattedTextFromName:(NSString *)name Artist:(NSString *)artist {
+    NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ by %@", name, artist]];
+    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, name.length)];
+    UIFont *titleFont = [UIFont fontWithName:@"Apple SD Gothic Neo" size:18.0f];
+
+    [infoString addAttribute:NSFontAttributeName value:titleFont range:NSMakeRange(0, name.length)];
+    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(name.length, artist.length + 4)];
     
-    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    style.paragraphSpacing = 0.5 * font.lineHeight;
-    style.hyphenationFactor = 1.0;
-    
-    return @{NSFontAttributeName: font,
-             NSParagraphStyleAttributeName: style };
+    return [infoString copy];
 }
 
 #pragma mark - ASDisplayNode overrides
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
-    CGSize imageSize = CGSizeMake(_artwork.width, _artwork.height);
-    CGSize textSize = CGSizeMake(300, 20);
+    _cellSize = constrainedSize;
+    CGSize textSize = CGSizeMake(constrainedSize.width, 60);
     
-    return CGSizeMake(constrainedSize.width, imageSize.height + textSize.height);
+    return CGSizeMake(constrainedSize.width, (float)_artwork.height/_artwork.width * _cellSize.width + textSize.height);
 }
 
 - (void)layout {
     NSLog(@"layout called");
-    _imageNode.frame = CGRectMake(0, 0, _artwork.width, _artwork.height);
-    _textNode.frame = CGRectMake(0, _artwork.height, 300, 20);
+    _imageNode.frame = CGRectMake(0, 0, _cellSize.width, (float)_artwork.height/_artwork.width * _cellSize.width);
+    //CGSize textSize = _textNode.calculatedSize;
+    _textNode.frame = CGRectMake(0, _imageNode.frame.size.height, _cellSize.width, 60);
 }
 
 @end

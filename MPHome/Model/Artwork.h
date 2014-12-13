@@ -11,8 +11,10 @@
 @interface Artwork : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *id;
 @property NSInteger width;
 @property NSInteger height;
+@property (nonatomic, strong) NSString *artist;
 @property (nonatomic, strong) NSString *theDescription;
 @property (nonatomic, strong) NSString *thumbnailUrlString;
 @property (nonatomic, strong) NSString *imageUrlString;

@@ -7,7 +7,7 @@
 //
 
 #import "MPDataLoader.h"
-#import "Artwork.h"
+//#import "Artwork.h"
 #import <LoremIpsum/LoremIpsum.h>
 
 @implementation MPDataLoader
@@ -25,15 +25,31 @@
     NSMutableArray *data = [[NSMutableArray alloc] init];
     for (int i = 0; i < count; i++) {
         // random width and height between 400 and 1200, multiplied by 10
-        NSInteger width = 40 + arc4random_uniform(800);
-        NSInteger height = 40 +arc4random_uniform(800);
+        NSInteger width = (40 + arc4random_uniform(80)) * 10;
+        NSInteger height = (40 + arc4random_uniform(80)) * 10;
         NSString *name = [LoremIpsum title];
         Artwork *artwork = [[Artwork alloc]initWithName:name width:width height:height];
+        artwork.artist = [LoremIpsum name];
         artwork.imageUrlString = [[LoremIpsum URLForPlaceholderImageWithSize:CGSizeMake(width, height)] absoluteString];
         
         [data addObject:artwork];
     }
     return data;
 }
+
+- (Artwork *)loadDataById:(NSString *)itemId {
+    NSInteger width = (40 + arc4random_uniform(80)) * 10;
+    NSInteger height = (40 + arc4random_uniform(80)) * 10;
+    NSString *name = [LoremIpsum title];
+    Artwork *artwork = [[Artwork alloc]initWithName:name width:width height:height];
+    artwork.artist = [LoremIpsum name];
+    artwork.imageUrlString = [[LoremIpsum URLForPlaceholderImageWithSize:CGSizeMake(width, height)] absoluteString];
+    artwork.theDescription = [LoremIpsum paragraph];
+    
+    return artwork;
+}
+
+#pragma mark - private funcs
+
 
 @end

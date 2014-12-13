@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Artwork.h"
 
 @interface MPDataLoader : NSObject
 
 +(instancetype)sharedInstance;
 
 -(NSMutableArray *)loadData:(int)count;
+- (Artwork *)loadDataById:(NSString *)itemId;
 
 @end
