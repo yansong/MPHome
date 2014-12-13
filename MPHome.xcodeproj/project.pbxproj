@@ -12,6 +12,7 @@
 		635F42AF1A3851F100E5E911 /* Artwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42AE1A3851F100E5E911 /* Artwork.m */; };
 		635F42B31A38522600E5E911 /* MPDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B21A38522600E5E911 /* MPDataLoader.m */; };
 		635F42B61A3946BC00E5E911 /* MPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B51A3946BC00E5E911 /* MPDetailViewController.m */; };
+		6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6387772B1A3C6F7B00F95F87 /* TextFormatter.m */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -42,6 +43,8 @@
 		635F42B21A38522600E5E911 /* MPDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDataLoader.m; path = Model/MPDataLoader.m; sourceTree = "<group>"; };
 		635F42B41A3946BC00E5E911 /* MPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDetailViewController.h; sourceTree = "<group>"; };
 		635F42B51A3946BC00E5E911 /* MPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDetailViewController.m; sourceTree = "<group>"; };
+		6387772A1A3C6F7B00F95F87 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextFormatter.h; path = Utils/TextFormatter.h; sourceTree = "<group>"; };
+		6387772B1A3C6F7B00F95F87 /* TextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFormatter.m; path = Utils/TextFormatter.m; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +89,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		638777291A3C6E4000F95F87 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6387772A1A3C6F7B00F95F87 /* TextFormatter.h */,
+				6387772B1A3C6F7B00F95F87 /* TextFormatter.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		63D27B0A1A35CA31000EAF08 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +121,7 @@
 		63D27B151A35CA31000EAF08 /* MPHome */ = {
 			isa = PBXGroup;
 			children = (
+				638777291A3C6E4000F95F87 /* Utils */,
 				635F42B01A3851FE00E5E911 /* Model */,
 				63D27B1A1A35CA31000EAF08 /* AppDelegate.h */,
 				63D27B1B1A35CA31000EAF08 /* AppDelegate.m */,
@@ -305,6 +318,7 @@
 				635F42A91A374BA200E5E911 /* MPBrowseViewController.m in Sources */,
 				63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */,
 				635F42B61A3946BC00E5E911 /* MPDetailViewController.m in Sources */,
+				6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */,
 				635F42AF1A3851F100E5E911 /* Artwork.m in Sources */,
 				635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */,
 				63D27B191A35CA31000EAF08 /* main.m in Sources */,

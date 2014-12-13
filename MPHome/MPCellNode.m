@@ -8,6 +8,7 @@
 
 #import "MPCellNode.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import "TextFormatter.h"
 
 @interface MPCellNode ()
 {
@@ -35,21 +36,10 @@
     
     _textNode = [[ASTextNode alloc]init];
     NSLog(@"title is %@", artwork.name);
-    _textNode.attributedString = [self formattedTextFromName:artwork.name Artist:artwork.artist];
+    _textNode.attributedString = [TextFormatter formatTextForTitle:artwork.name Content:artwork.artist];
     _textNode.backgroundColor = [UIColor whiteColor];
     [self addSubnode:_textNode];
     return self;
-}
-
-- (NSAttributedString *)formattedTextFromName:(NSString *)name Artist:(NSString *)artist {
-    NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ by %@", name, artist]];
-    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, name.length)];
-    UIFont *titleFont = [UIFont fontWithName:@"Apple SD Gothic Neo" size:18.0f];
-
-    [infoString addAttribute:NSFontAttributeName value:titleFont range:NSMakeRange(0, name.length)];
-    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(name.length, artist.length + 4)];
-    
-    return [infoString copy];
 }
 
 #pragma mark - ASDisplayNode overrides
