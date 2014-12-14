@@ -11,6 +11,7 @@
 #import "MPDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MPDetailViewController()
 {
@@ -41,6 +42,7 @@
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(320, _contentHeight);
+    [self addARButton];
     [self addDismissButton];
     return self;
 }
@@ -76,30 +78,66 @@
     UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
     dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
     dismissButton.tintColor = [UIColor whiteColor];
-    dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
-    [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+    //dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
+    
+    dismissButton.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
+    UIImage *buttonImage = [UIImage imageNamed:@"btnClose"];
+    [dismissButton setImage:buttonImage forState:UIControlStateNormal];
+    [dismissButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    dismissButton.layer.cornerRadius = 6;
+    dismissButton.clipsToBounds = YES;
     [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:dismissButton];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:dismissButton
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.f
-                                                           constant:0.f]];
-    
     [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:[dismissButton]-|"
+                               constraintsWithVisualFormat:@"H:[dismissButton]-20-|"
+                               options:0
+                               metrics:nil
+                               views:NSDictionaryOfVariableBindings(dismissButton)]];
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"V:|-25-[dismissButton]"
                                options:0
                                metrics:nil
                                views:NSDictionaryOfVariableBindings(dismissButton)]];
 }
 
-- (void)dismiss:(id)sender
-{
-    [self dismissViewControllerAnimated:NO completion:NULL];
+- (void)addARButton {
+    UIButton *arButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    arButton.translatesAutoresizingMaskIntoConstraints = NO;
+    arButton.tintColor = [UIColor whiteColor];
+    //dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
+    
+    arButton.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
+    UIImage *buttonImage = [UIImage imageNamed:@"btnAR"];
+    [arButton setImage:buttonImage forState:UIControlStateNormal];
+    [arButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    arButton.layer.cornerRadius = 6;
+    arButton.clipsToBounds = NO;
+    [arButton addTarget:self action:@selector(showAR:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:arButton];
+    
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"H:|-20-[arButton]"
+                               options:0
+                               metrics:nil
+                               views:NSDictionaryOfVariableBindings(arButton)]];
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"V:|-25-[arButton]"
+                               options:0
+                               metrics:nil
+                               views:NSDictionaryOfVariableBindings(arButton)]];
 }
 
+- (void)dismiss:(id)sender
+{
+    if (_delegate) {
+        [_delegate didDismissDetailViewController];
+    }
+    //[self dismissViewControllerAnimated:NO completion:NULL];
+}
+
+- (void)showAR:(id)sender {
+    
+}
 
 @end

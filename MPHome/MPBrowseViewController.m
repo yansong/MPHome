@@ -73,7 +73,7 @@ static const NSInteger kInitialCount = 20;
 
 #pragma mark - DetailViewControllerDelegate
 - (void)didDismissDetailViewController {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 @end
