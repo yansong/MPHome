@@ -64,7 +64,7 @@ static const NSInteger kInitialCount = 20;
 
 #pragma mark - UITablevieDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"row %d selected", indexPath.row);
+    NSLog(@"row %ld selected", (long)indexPath.row);
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:@"1"];
     detailView.delegate = self;
     

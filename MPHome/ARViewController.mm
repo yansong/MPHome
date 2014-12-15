@@ -7,6 +7,8 @@
 //
 
 #import "ARViewController.h"
+#import <QCAR/Area.h>
+
 
 @implementation ARViewController
 
