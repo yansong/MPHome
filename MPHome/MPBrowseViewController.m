@@ -68,7 +68,7 @@ static const NSInteger kInitialCount = 20;
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:@"1"];
     detailView.delegate = self;
     
-    [self presentViewController:detailView animated:NO completion:NULL];
+    [self presentViewController:detailView animated:NO completion:nil];
 }
 
 #pragma mark - DetailViewControllerDelegate

@@ -13,10 +13,12 @@
 
 + (NSAttributedString *)formatTextForTitle:(NSString *)title Content:(NSString *)content {
     NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\r%@", title, content]];
-    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, title.length)];
     UIFont *titleFont = [UIFont fontWithName:@"Apple SD Gothic Neo" size:18.0f];
-    
     [infoString addAttribute:NSFontAttributeName value:titleFont range:NSMakeRange(0, title.length)];
+    [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, title.length)];
+    
+    UIFont *contentFont = [UIFont fontWithName:@"Apple SD Gothic Neo" size:15.0f];
+    [infoString addAttribute:NSFontAttributeName value:contentFont range:NSMakeRange(title.length + 1, content.length)];
     [infoString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(title.length + 1, content.length)];
     
     return [infoString copy];

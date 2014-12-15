@@ -12,8 +12,9 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ARViewController.h"
 
-@interface MPDetailViewController()
+@interface MPDetailViewController()<ASNetworkImageNodeDelegate, ARViewControllerDelegate>
 {
     Artwork* _artwork;
     UIScrollView *_scrollview;
@@ -42,7 +43,7 @@
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(320, _contentHeight);
-    [self addARButton];
+    //[self addARButton];
     [self addDismissButton];
     return self;
 }
@@ -61,6 +62,8 @@
     _contentHeight += height;
     
     NSLog(@"Fetching image from %@", _artwork.imageUrlString);
+    
+    _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];
 }
 
@@ -133,11 +136,27 @@
     if (_delegate) {
         [_delegate didDismissDetailViewController];
     }
-    //[self dismissViewControllerAnimated:NO completion:NULL];
+    else {
+        [self dismissViewControllerAnimated:NO completion:NULL];
+    }
 }
 
 - (void)showAR:(id)sender {
+    ARViewController *arViewController = [[ARViewController alloc]init];
+    arViewController.delegate = self;
     
+    [self presentViewController:arViewController animated:NO completion:nil];
+}
+
+# pragma mark - ASNetworkImageNodeDelegate
+- (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image {
+    NSLog(@"Image loaded");
+    [self addARButton];
+}
+
+#pragma mark - ARViewControllerDelegate
+- (void)didDismissARViewController {
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

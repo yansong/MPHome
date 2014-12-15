@@ -13,6 +13,7 @@
 		635F42B31A38522600E5E911 /* MPDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B21A38522600E5E911 /* MPDataLoader.m */; };
 		635F42B61A3946BC00E5E911 /* MPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B51A3946BC00E5E911 /* MPDetailViewController.m */; };
 		6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6387772B1A3C6F7B00F95F87 /* TextFormatter.m */; };
+		638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6387772F1A3EC8CE00F95F87 /* ARViewController.mm */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -45,6 +46,8 @@
 		635F42B51A3946BC00E5E911 /* MPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDetailViewController.m; sourceTree = "<group>"; };
 		6387772A1A3C6F7B00F95F87 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextFormatter.h; path = Utils/TextFormatter.h; sourceTree = "<group>"; };
 		6387772B1A3C6F7B00F95F87 /* TextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFormatter.m; path = Utils/TextFormatter.m; sourceTree = "<group>"; };
+		6387772E1A3EC8CE00F95F87 /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
+		6387772F1A3EC8CE00F95F87 /* ARViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ARViewController.mm; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				635F42AB1A37F15700E5E911 /* MPCellNode.m */,
 				635F42B41A3946BC00E5E911 /* MPDetailViewController.h */,
 				635F42B51A3946BC00E5E911 /* MPDetailViewController.m */,
+				6387772E1A3EC8CE00F95F87 /* ARViewController.h */,
+				6387772F1A3EC8CE00F95F87 /* ARViewController.mm */,
 			);
 			path = MPHome;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */,
 				635F42B61A3946BC00E5E911 /* MPDetailViewController.m in Sources */,
 				6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */,
+				638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */,
 				635F42AF1A3851F100E5E911 /* Artwork.m in Sources */,
 				635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */,
 				63D27B191A35CA31000EAF08 /* main.m in Sources */,
