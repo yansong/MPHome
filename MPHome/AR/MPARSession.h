@@ -40,22 +40,22 @@
 - (void) onInitARDone:(NSError *)error;
 
 // the application must initialize its tracker(s)
-- (bool) doInitTrackers;
+- (BOOL) doInitTrackers;
 
 // the application must initialize the data associated to its tracker(s)
-- (bool) doLoadTrackersData;
+- (BOOL) doLoadTrackersData;
 
 // the application must starts its tracker(s)
-- (bool) doStartTrackers;
+- (BOOL) doStartTrackers;
 
 // the application must stop its tracker(s)
-- (bool) doStopTrackers;
+- (BOOL) doStopTrackers;
 
 // the application must unload the data associated its tracker(s)
-- (bool) doUnloadTrackersData;
+- (BOOL) doUnloadTrackersData;
 
 // the application must deinititalize its tracker(s)
-- (bool) doDeinitTrackers;
+- (BOOL) doDeinitTrackers;
 
 @optional
 // optional method to handle the QCAR callback - can be used to swap dataset for instance
@@ -71,22 +71,22 @@
 - (void) initAR:(int) QCARInitFlags ARViewBoundsSize:(CGSize) ARViewBoundsSize orientation:(UIInterfaceOrientation) ARViewOrientation;
 
 // start the AR session
-- (bool) startAR:(QCAR::CameraDevice::CAMERA) camera error:(NSError **)error;
+- (BOOL) startAR:(QCAR::CameraDevice::CAMERA) camera error:(NSError **)error;
 
 // pause the AR session
-- (bool) pauseAR:(NSError **)error;
+- (BOOL) pauseAR:(NSError **)error;
 
 // resume the AR session
-- (bool) resumeAR:(NSError **)error;
+- (BOOL) resumeAR:(NSError **)error;
 
 // stop the AR session
-- (bool) stopAR:(NSError **)error;
+- (BOOL) stopAR:(NSError **)error;
 
 // utility methods
 
 // stop the camera.
 // This can be used if you want to switch between the front and the back camera for instance
-- (bool) stopCamera:(NSError **)error;
+- (BOOL) stopCamera:(NSError **)error;
 
 @property (nonatomic, readwrite) BOOL isRetinaDisplay;
 @property (nonatomic, readwrite) BOOL cameraIsStarted;

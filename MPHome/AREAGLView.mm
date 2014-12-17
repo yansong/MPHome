@@ -17,6 +17,24 @@
 #import <QCAR/Tool.h>
 #import <QCAR/Renderer.h>
 
+//******************************************************************************
+// *** OpenGL ES thread safety ***
+//
+// OpenGL ES on iOS is not thread safe.  We ensure thread safety by following
+// this procedure:
+// 1) Create the OpenGL ES context on the main thread.
+// 2) Start the QCAR camera, which causes QCAR to locate our EAGLView and start
+//    the render thread.
+// 3) QCAR calls our renderFrameQCAR method periodically on the render thread.
+//    The first time this happens, the defaultFramebuffer does not exist, so it
+//    is created with a call to createFramebuffer.  createFramebuffer is called
+//    on the main thread in order to safely allocate the OpenGL ES storage,
+//    which is shared with the drawable layer.  The render (background) thread
+//    is blocked during the call to createFramebuffer, thus ensuring no
+//    concurrent use of the OpenGL ES context.
+//
+//******************************************************************************
+
 @interface AREAGLView()<UIGLViewProtocol>
 {
     EAGLContext *_context;
@@ -33,6 +51,8 @@
     GLint textureCoordHandle;
     GLint mvpMatrixHandle;
     GLint texSampler2DHandle;
+    
+    MPARSession* _arSession;
 }
 @end
 
@@ -44,9 +64,11 @@
 }
 
 #pragma mark - AR View life cycle
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame arSession:(MPARSession *)session{
     if (!(self = [super init]))
         return nil;
+    
+    _arSession = session;
     
     // TODO: enable retina mode if available on the device
     
@@ -96,6 +118,7 @@
 
 #pragma mark - UIGLViewProtocol
 - (void)renderFrameQCAR {
+    
     [self setFramebuffer];
     
     // clear color and depth buffer
@@ -170,7 +193,7 @@
 }
 
 - (void)setFramebuffer {
-    // ????
+    // ??? what's this for?
     // The EAGLContext must be set for each thread that wishes to use it.
     // Set it the first time this method is called (on main thread)
     if (_context != [EAGLContext currentContext]) {

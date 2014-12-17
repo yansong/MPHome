@@ -142,7 +142,7 @@ namespace {
 }
 
 // Resume QCAR
-- (bool) resumeAR:(NSError **)error {
+- (BOOL) resumeAR:(NSError **)error {
     QCAR::onResume();
     
     // if the camera was previously started, but not currently active, then
@@ -168,7 +168,7 @@ namespace {
 
 
 // Pause QCAR
-- (bool)pauseAR:(NSError **)error {
+- (BOOL)pauseAR:(NSError **)error {
     if (self.cameraIsActive) {
         // Stop and deinit the camera
         if(! QCAR::CameraDevice::getInstance().stop()) {
@@ -432,7 +432,7 @@ namespace {
 }
 
 
-- (bool) startAR:(QCAR::CameraDevice::CAMERA)camera error:(NSError **)error {
+- (BOOL) startAR:(QCAR::CameraDevice::CAMERA)camera error:(NSError **)error {
     // Start the camera.  This causes QCAR to locate our EAGLView in the view
     // hierarchy, start a render thread, and then call renderFrameQCAR on the
     // view periodically
@@ -446,7 +446,7 @@ namespace {
 }
 
 // Stop QCAR camera
-- (bool)stopAR:(NSError **)error {
+- (BOOL)stopAR:(NSError **)error {
     // Stop the camera
     if (self.cameraIsActive) {
         // Stop and deinit the camera
@@ -482,7 +482,7 @@ namespace {
 }
 
 // stop the camera
-- (bool) stopCamera:(NSError **)error {
+- (BOOL) stopCamera:(NSError **)error {
     if (self.cameraIsActive) {
         // Stop and deinit the camera
         QCAR::CameraDevice::getInstance().stop();

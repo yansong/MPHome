@@ -27,6 +27,8 @@
 		638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6387772F1A3EC8CE00F95F87 /* ARViewController.mm */; };
 		639205381A4124B700EDE3F5 /* libVuforia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 639205371A4124B700EDE3F5 /* libVuforia.a */; };
 		6392054D1A41A99C00EDE3F5 /* MPARSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6392054C1A41A99C00EDE3F5 /* MPARSession.mm */; };
+		639205531A41CBE700EDE3F5 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639205511A41CBE700EDE3F5 /* StonesAndChips.dat */; };
+		639205541A41CBE700EDE3F5 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639205521A41CBE700EDE3F5 /* StonesAndChips.xml */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -77,6 +79,8 @@
 		639205371A4124B700EDE3F5 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = vuforia/lib/arm/libVuforia.a; sourceTree = "<group>"; };
 		6392054B1A41A99C00EDE3F5 /* MPARSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPARSession.h; path = AR/MPARSession.h; sourceTree = "<group>"; };
 		6392054C1A41A99C00EDE3F5 /* MPARSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MPARSession.mm; path = AR/MPARSession.mm; sourceTree = "<group>"; };
+		639205511A41CBE700EDE3F5 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = StonesAndChips.dat; sourceTree = "<group>"; };
+		639205521A41CBE700EDE3F5 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = StonesAndChips.xml; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +155,15 @@
 			name = AR;
 			sourceTree = "<group>";
 		};
+		639205501A41CB9700EDE3F5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				639205511A41CBE700EDE3F5 /* StonesAndChips.dat */,
+				639205521A41CBE700EDE3F5 /* StonesAndChips.xml */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		63D27B0A1A35CA31000EAF08 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +187,7 @@
 		63D27B151A35CA31000EAF08 /* MPHome */ = {
 			isa = PBXGroup;
 			children = (
+				639205501A41CB9700EDE3F5 /* Assets */,
 				6392054F1A41A9D100EDE3F5 /* AR */,
 				638777291A3C6E4000F95F87 /* Utils */,
 				635F42B01A3851FE00E5E911 /* Model */,
@@ -186,9 +200,9 @@
 				63D27B161A35CA31000EAF08 /* Supporting Files */,
 				635F42AA1A37F15700E5E911 /* MPCellNode.h */,
 				635F42AB1A37F15700E5E911 /* MPCellNode.m */,
-				635F42B41A3946BC00E5E911 /* MPDetailViewController.h */,
 				6351B3CC1A4046F400D0E586 /* AREAGLView.h */,
 				6351B3CD1A4046F400D0E586 /* AREAGLView.mm */,
+				635F42B41A3946BC00E5E911 /* MPDetailViewController.h */,
 				635F42B51A3946BC00E5E911 /* MPDetailViewController.m */,
 				6387772E1A3EC8CE00F95F87 /* ARViewController.h */,
 				6387772F1A3EC8CE00F95F87 /* ARViewController.mm */,
@@ -332,7 +346,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D27B271A35CA31000EAF08 /* LaunchScreen.xib in Resources */,
+				639205531A41CBE700EDE3F5 /* StonesAndChips.dat in Resources */,
 				63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */,
+				639205541A41CBE700EDE3F5 /* StonesAndChips.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

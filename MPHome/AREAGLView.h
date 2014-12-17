@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPARSession.h"
 
 @interface AREAGLView : UIView
+
+- (instancetype)initWithFrame:(CGRect)frame arSession:(MPARSession *)session;
+
+- (void)finishOpenGLESCommands;
+- (void)freeOpenGLESResources;
 
 @end

@@ -140,7 +140,8 @@
 }
 
 - (void)showAR:(id)sender {
-    ARViewController *arViewController = [[ARViewController alloc]init];
+    //ARViewController *arViewController = [[ARViewController alloc]init];
+    ARViewController *arViewController = [[ARViewController alloc]initWithImage:nil width:200 height:100];
     arViewController.delegate = self;
     
     [self presentViewController:arViewController animated:NO completion:nil];
