@@ -61,8 +61,6 @@
     // height
     _contentHeight += height;
     
-    NSLog(@"Fetching image from %@", _artwork.imageUrlString);
-    
     _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];
 }

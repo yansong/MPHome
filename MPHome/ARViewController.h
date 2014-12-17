@@ -19,4 +19,6 @@
 
 @property (nonatomic, weak) id<ARViewControllerDelegate> delegate;
 
+- (instancetype)initWithImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height;
+
 @end

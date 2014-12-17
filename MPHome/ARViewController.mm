@@ -8,9 +8,33 @@
 
 #import "ARViewController.h"
 #import <QCAR/Area.h>
+#import "AREAGLView.h"
 
+@interface ARViewController()
+{
+    AREAGLView *_eaglView;
+    CGRect _viewFrame;
+}
+@end
 
 @implementation ARViewController
+
+- (instancetype)initWithImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height {
+    if (!(self = [super init]))
+        return nil;
+    
+    // Create the EAGLView with the screen dimensions
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    _viewFrame = screenBounds;
+    
+    // TODO: retina
+    
+    // TODO: auto focus
+    
+    // TODO: pause/resume AR when goes/comes back from background
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
