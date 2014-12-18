@@ -25,24 +25,19 @@ namespace ARUtilities
     void checkGlError(const char* operation);
     
     // Set the rotation components of a 4x4 matrix
-    void setRotationMatrix(float angle, float x, float y, float z,
-                           float *nMatrix);
+    void setRotationMatrix(float angle, float x, float y, float z, float *nMatrix);
     
     // Set the translation components of a 4x4 matrix
-    void translatePoseMatrix(float x, float y, float z,
-                             float* nMatrix = NULL);
+    void translatePoseMatrix(float x, float y, float z, float* nMatrix = NULL);
     
     // Apply a rotation
-    void rotatePoseMatrix(float angle, float x, float y, float z,
-                          float* nMatrix = NULL);
+    void rotatePoseMatrix(float angle, float x, float y, float z, float* nMatrix = NULL);
     
     // Apply a scaling transformation
-    void scalePoseMatrix(float x, float y, float z,
-                         float* nMatrix = NULL);
+    void scalePoseMatrix(float x, float y, float z, float* nMatrix = NULL);
     
     // Multiply the two matrices A and B and write the result to C
-    void multiplyMatrix(float *matrixA, float *matrixB,
-                        float *matrixC);
+    void multiplyMatrix(float *matrixA, float *matrixB, float *matrixC);
     
     // Initialise a shader
     int initShader(GLenum nShaderType, const char* pszSource, const char* pszDefs = NULL);

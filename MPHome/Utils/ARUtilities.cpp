@@ -11,7 +11,7 @@
 #include <string.h>
 #include "ARUtilities.h"
 
-namespace SampleApplicationUtils
+namespace ARUtilities
 {
     // Print a 4x4 matrix
     void

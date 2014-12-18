@@ -308,7 +308,7 @@
     
     // we set the off target tracking mode to the current state
     if (success) {
-        [self setExtendedTrackingForDataSet:_dataSetCurrent start:YES];
+        [self setExtendedTrackingForDataSet:_dataSetCurrent start:NO];
     }
     
     return success;
