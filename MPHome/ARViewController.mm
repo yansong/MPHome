@@ -181,7 +181,7 @@
 
 - (BOOL)doLoadTrackersData {
     // MARK: Load tracker data file
-    _dataSetStones = [self loadImageTrackerDataSet:@"StonesAndChips.xml"];
+    _dataSetStones = [self loadImageTrackerDataSet:@"mpah_t01.xml"];
     
     if (_dataSetStones == NULL) {
         NSLog(@"Failed to load datasets.");

@@ -99,8 +99,6 @@ namespace {
         [self setContentScaleFactor:2.0f];
     }
     
-    // TODO: in sample code, load all textures (image data, width, height) here
-    
     // Create OpenGL ES2 context
     _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     
@@ -110,7 +108,7 @@ namespace {
         [EAGLContext setCurrentContext:_context];
     }
     
-    // TODO: in sample code, generates ES textures for use
+    NSLog(@"Loading texture");
     textureName = [self buildTexture];
     
     [self initShaders];
@@ -125,8 +123,6 @@ namespace {
     if ([EAGLContext currentContext] == _context) {
         [EAGLContext setCurrentContext:nil];
     }
-    
-    // TODO: release augmentation texture
 }
 
 - (void)finishOpenGLESCommands {
@@ -180,7 +176,7 @@ namespace {
         QCAR::Matrix44F modelViewProjection;
         
         ARUtilities::translatePoseMatrix(0.0f, 0.0f, kObjectScaleNormal, &modelViewMatrix.data[0]);
-        ARUtilities::scalePoseMatrix(targetSize.data[0], targetSize.data[1], 1.0f, &modelViewMatrix.data[0]);
+        ARUtilities::scalePoseMatrix(targetSize.data[0]/2.0f, targetSize.data[1]/2.0f, 1.0f, &modelViewMatrix.data[0]);
         ARUtilities::multiplyMatrix(&_arSession.projectionMatrix.data[0], &modelViewMatrix.data[0], &modelViewProjection.data[0]);
         
         glUseProgram(shaderProgramID);
@@ -325,8 +321,13 @@ namespace {
     
     CGContextRef textureContext = CGBitmapContextCreate(textureData, width, height, 8, width * 4, CGImageGetColorSpace(textureImage), kCGImageAlphaPremultipliedLast);
     
+    // ???: flip image in cgcontect, not sure if it is right way
+    CGContextTranslateCTM(textureContext, 0.0f, height);
+    CGContextScaleCTM(textureContext, 1.0f, -1.0f);
+    
     // draw the image into the context
     CGContextDrawImage(textureContext, CGRectMake(0, 0, width, height), textureImage);
+    
     CGContextRelease(textureContext);
     
     // send pixel data to opengl
@@ -334,9 +335,12 @@ namespace {
     glGenTextures(1, &texName);
     glBindTexture(GL_TEXTURE_2D, texName);
     
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)width, (int)height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
     
     free(textureData);
     return texName;

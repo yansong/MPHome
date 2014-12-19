@@ -33,6 +33,8 @@
 		639205691A42984900EDE3F5 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639205651A42984900EDE3F5 /* StonesAndChips.dat */; };
 		6392056A1A42984900EDE3F5 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639205661A42984900EDE3F5 /* StonesAndChips.xml */; };
 		6392056C1A42986F00EDE3F5 /* demoPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 6392056B1A42986F00EDE3F5 /* demoPic.png */; };
+		6392056F1A42CDAE00EDE3F5 /* mpah_t01.dat in Resources */ = {isa = PBXBuildFile; fileRef = 6392056D1A42CDAE00EDE3F5 /* mpah_t01.dat */; };
+		639205701A42CDAE00EDE3F5 /* mpah_t01.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6392056E1A42CDAE00EDE3F5 /* mpah_t01.xml */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -91,6 +93,8 @@
 		639205651A42984900EDE3F5 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = StonesAndChips.dat; path = Assets/StonesAndChips.dat; sourceTree = "<group>"; };
 		639205661A42984900EDE3F5 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = Assets/StonesAndChips.xml; sourceTree = "<group>"; };
 		6392056B1A42986F00EDE3F5 /* demoPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = demoPic.png; path = Assets/demoPic.png; sourceTree = "<group>"; };
+		6392056D1A42CDAE00EDE3F5 /* mpah_t01.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = mpah_t01.dat; sourceTree = "<group>"; };
+		6392056E1A42CDAE00EDE3F5 /* mpah_t01.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mpah_t01.xml; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		639205501A41CB9700EDE3F5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6392056D1A42CDAE00EDE3F5 /* mpah_t01.dat */,
+				6392056E1A42CDAE00EDE3F5 /* mpah_t01.xml */,
 				6392056B1A42986F00EDE3F5 /* demoPic.png */,
 				639205631A42984900EDE3F5 /* Simple.fragsh */,
 				639205641A42984900EDE3F5 /* Simple.vertsh */,
@@ -364,8 +370,10 @@
 				639205671A42984900EDE3F5 /* Simple.fragsh in Resources */,
 				639205691A42984900EDE3F5 /* StonesAndChips.dat in Resources */,
 				6392056A1A42984900EDE3F5 /* StonesAndChips.xml in Resources */,
+				639205701A42CDAE00EDE3F5 /* mpah_t01.xml in Resources */,
 				6392056C1A42986F00EDE3F5 /* demoPic.png in Resources */,
 				639205681A42984900EDE3F5 /* Simple.vertsh in Resources */,
+				6392056F1A42CDAE00EDE3F5 /* mpah_t01.dat in Resources */,
 				63D27B271A35CA31000EAF08 /* LaunchScreen.xib in Resources */,
 				63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */,
 			);
