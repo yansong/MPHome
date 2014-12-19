@@ -24,6 +24,10 @@
     QCAR::DataSet *_dataSetStones;
     
     MPARSession *_arSession;
+    
+    CGImageRef _arImageRef;
+    NSInteger _arImageWidth;
+    NSInteger _arImageHeight;
 }
 @end
 
@@ -32,6 +36,10 @@
 - (instancetype)initWithImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height {
     if (!(self = [super init]))
         return nil;
+    
+    _arImageRef = image;
+    _arImageWidth = width;
+    _arImageHeight = height;
     
     // Create ar session
     _arSession = [[MPARSession alloc] initWithDelegate:self];
@@ -85,6 +93,7 @@
 - (void)loadView {
     // Create EAGLview
     _eaglView = [[AREAGLView alloc]initWithFrame:_viewFrame arSession:_arSession];
+    [_eaglView setupArImage:_arImageRef width:_arImageWidth height:_arImageHeight];
     self.view = _eaglView;
     
     // TODO: show loading animation while AR is being initialized

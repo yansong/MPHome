@@ -71,6 +71,12 @@ namespace {
     GLuint textureName;
     
     MPARSession* _arSession;
+    
+    CGImageRef _imageRef;
+    NSInteger _imageWidth;
+    NSInteger _imageHeight;
+    
+    float _imageVertices[12];
 }
 
 - (void)initShaders;
@@ -108,12 +114,22 @@ namespace {
         [EAGLContext setCurrentContext:_context];
     }
     
-    NSLog(@"Loading texture");
-    textureName = [self buildTexture];
-    
     [self initShaders];
     
     return self;
+}
+
+- (void)setupArImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height {
+    _imageRef = image;
+    _imageWidth = width / 297.0 * 247;
+    _imageHeight = height / 210.0 * 185;
+    NSLog(@"Setup AR image: image width %d, height %d", _imageWidth, _imageHeight);
+    for (int i = 0; i < 12; i++) {
+        _imageVertices[i] = quadVertices[i] * width / 247.0;
+    }
+
+    NSLog(@"Loading texture");
+    textureName = [self buildTexture:_imageRef width:_imageWidth height:_imageHeight];
 }
 
 - (void)dealloc {
@@ -181,7 +197,8 @@ namespace {
         
         glUseProgram(shaderProgramID);
         
-        glVertexAttribPointer(vertexHandle, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*)&quadVertices[0]);
+        //glVertexAttribPointer(vertexHandle, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*)&quadVertices[0]);
+        glVertexAttribPointer(vertexHandle, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*)&_imageVertices[0]);
         glVertexAttribPointer(normalHandle, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*)&quadNormals[0]);
         glVertexAttribPointer(textureCoordHandle, 2, GL_FLOAT, GL_FALSE, 0, (const GLvoid*)&quadTexCoords[0]);
 
@@ -305,8 +322,9 @@ namespace {
 }
 
 # pragma mark - Private funcs
-- (GLuint)buildTexture {
+- (GLuint)buildTexture:(CGImageRef)textureImage width:(NSInteger)width height:(NSInteger)height {
     // get core graphics image reference
+    /*
     CGImageRef textureImage = [[UIImage imageNamed:@"demoPic.png"] CGImage];
     if (!textureImage) {
         NSLog(@"Failed to load image.");
@@ -316,6 +334,7 @@ namespace {
     // create core graphics bitmap context
     size_t width = CGImageGetWidth(textureImage);
     size_t height = CGImageGetHeight(textureImage);
+    */
     
     GLubyte *textureData = (GLubyte *)calloc(width * height * 4, sizeof(GLubyte));
     

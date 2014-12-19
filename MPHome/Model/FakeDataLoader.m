@@ -32,7 +32,7 @@
     artwork.width = 2007;
     artwork.height = 1295;
     artwork.thumbnailUrlString = @"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg/512px-Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg";
-    artwork.featureUrlString = @"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg/2048px-Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg";
+    artwork.featureUrlString = @"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg/1024px-Henri_Rousseau_-_La_Boh%C3%A9mienne_endormie_-_Google_Art_Project.jpg";
     artwork.medium = @"oil on canvas";
     artwork.currentLocation = @"Museum of Modern Art";
     

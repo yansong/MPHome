@@ -13,6 +13,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame arSession:(MPARSession *)session;
 
+- (void)setupArImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height;
 - (void)finishOpenGLESCommands;
 - (void)freeOpenGLESResources;
 

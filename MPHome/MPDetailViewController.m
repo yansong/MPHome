@@ -20,6 +20,10 @@
     UIScrollView *_scrollview;
     ASNetworkImageNode *_imageNode;
     CGFloat _contentHeight;
+    
+    CGImageRef _imageRef;
+    NSInteger _imageWidth;
+    NSInteger _imageHeight;
 }
 @end
 
@@ -30,6 +34,10 @@
         return nil;
     _contentHeight = 0;
     _artwork = [[FakeDataLoader sharedInstance]getArtworkDetail:itemId];
+    
+    _imageWidth = _artwork.width;
+    _imageHeight = _artwork.height;
+    
     CGRect fullscreenRect = [[UIScreen mainScreen]applicationFrame];
     _scrollview = [[UIScrollView alloc] initWithFrame:fullscreenRect];
     _scrollview.contentSize = CGSizeMake(320, 758);
@@ -140,8 +148,7 @@
 }
 
 - (void)showAR:(id)sender {
-    //ARViewController *arViewController = [[ARViewController alloc]init];
-    ARViewController *arViewController = [[ARViewController alloc]initWithImage:nil width:200 height:100];
+    ARViewController *arViewController = [[ARViewController alloc]initWithImage:_imageRef width:_imageWidth height:_imageHeight];
     arViewController.delegate = self;
     
     [self presentViewController:arViewController animated:NO completion:nil];
@@ -150,6 +157,7 @@
 # pragma mark - ASNetworkImageNodeDelegate
 - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image {
     NSLog(@"Image loaded");
+    _imageRef = [imageNode.image CGImage];
     [self addARButton];
 }
 
