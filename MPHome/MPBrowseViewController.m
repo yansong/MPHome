@@ -8,11 +8,9 @@
 
 #import "MPBrowseViewController.h"
 #import "MPCellNode.h"
-#import "MPDataLoader.h"
+#import "FakeDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "MPDetailViewController.h"
-
-static const NSInteger kInitialCount = 20;
 
 @interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
 {
@@ -29,7 +27,7 @@ static const NSInteger kInitialCount = 20;
         return nil;
 
     // initialize data
-    _masterpieces = [[MPDataLoader sharedInstance]loadData:kInitialCount];
+    _masterpieces = [[FakeDataLoader sharedInstance]listArtworks];
     
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
