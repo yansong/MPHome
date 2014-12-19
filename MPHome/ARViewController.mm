@@ -10,6 +10,13 @@
 
 @implementation ARViewController
 
+- (instancetype)initWithImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height {
+    if (![super init])
+        return nil;
+    
+    return  self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addDismissButton];

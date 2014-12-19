@@ -10,10 +10,10 @@
 		635F42A91A374BA200E5E911 /* MPBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42A81A374BA200E5E911 /* MPBrowseViewController.m */; };
 		635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42AB1A37F15700E5E911 /* MPCellNode.m */; };
 		635F42AF1A3851F100E5E911 /* Artwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42AE1A3851F100E5E911 /* Artwork.m */; };
-		635F42B31A38522600E5E911 /* MPDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B21A38522600E5E911 /* MPDataLoader.m */; };
 		635F42B61A3946BC00E5E911 /* MPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635F42B51A3946BC00E5E911 /* MPDetailViewController.m */; };
 		6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6387772B1A3C6F7B00F95F87 /* TextFormatter.m */; };
 		638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6387772F1A3EC8CE00F95F87 /* ARViewController.mm */; };
+		639205B51A442A6B00EDE3F5 /* FakeDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 639205B41A442A6B00EDE3F5 /* FakeDataLoader.m */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -40,14 +40,15 @@
 		635F42AB1A37F15700E5E911 /* MPCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCellNode.m; sourceTree = "<group>"; };
 		635F42AD1A3851F100E5E911 /* Artwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Artwork.h; path = Model/Artwork.h; sourceTree = "<group>"; };
 		635F42AE1A3851F100E5E911 /* Artwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Artwork.m; path = Model/Artwork.m; sourceTree = "<group>"; };
-		635F42B11A38522600E5E911 /* MPDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDataLoader.h; path = Model/MPDataLoader.h; sourceTree = "<group>"; };
-		635F42B21A38522600E5E911 /* MPDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDataLoader.m; path = Model/MPDataLoader.m; sourceTree = "<group>"; };
 		635F42B41A3946BC00E5E911 /* MPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDetailViewController.h; sourceTree = "<group>"; };
 		635F42B51A3946BC00E5E911 /* MPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDetailViewController.m; sourceTree = "<group>"; };
 		6387772A1A3C6F7B00F95F87 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextFormatter.h; path = Utils/TextFormatter.h; sourceTree = "<group>"; };
 		6387772B1A3C6F7B00F95F87 /* TextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFormatter.m; path = Utils/TextFormatter.m; sourceTree = "<group>"; };
 		6387772E1A3EC8CE00F95F87 /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
 		6387772F1A3EC8CE00F95F87 /* ARViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ARViewController.mm; sourceTree = "<group>"; };
+		639205B21A4427D800EDE3F5 /* MPDataLoaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDataLoaderProtocol.h; path = Model/MPDataLoaderProtocol.h; sourceTree = "<group>"; };
+		639205B31A442A6B00EDE3F5 /* FakeDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeDataLoader.h; path = Model/FakeDataLoader.h; sourceTree = "<group>"; };
+		639205B41A442A6B00EDE3F5 /* FakeDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FakeDataLoader.m; path = Model/FakeDataLoader.m; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,10 +85,11 @@
 		635F42B01A3851FE00E5E911 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				639205B21A4427D800EDE3F5 /* MPDataLoaderProtocol.h */,
 				635F42AD1A3851F100E5E911 /* Artwork.h */,
 				635F42AE1A3851F100E5E911 /* Artwork.m */,
-				635F42B11A38522600E5E911 /* MPDataLoader.h */,
-				635F42B21A38522600E5E911 /* MPDataLoader.m */,
+				639205B31A442A6B00EDE3F5 /* FakeDataLoader.h */,
+				639205B41A442A6B00EDE3F5 /* FakeDataLoader.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -130,15 +132,15 @@
 				63D27B1B1A35CA31000EAF08 /* AppDelegate.m */,
 				635F42A71A374BA200E5E911 /* MPBrowseViewController.h */,
 				635F42A81A374BA200E5E911 /* MPBrowseViewController.m */,
-				63D27B231A35CA31000EAF08 /* Images.xcassets */,
-				63D27B251A35CA31000EAF08 /* LaunchScreen.xib */,
-				63D27B161A35CA31000EAF08 /* Supporting Files */,
 				635F42AA1A37F15700E5E911 /* MPCellNode.h */,
 				635F42AB1A37F15700E5E911 /* MPCellNode.m */,
 				635F42B41A3946BC00E5E911 /* MPDetailViewController.h */,
 				635F42B51A3946BC00E5E911 /* MPDetailViewController.m */,
 				6387772E1A3EC8CE00F95F87 /* ARViewController.h */,
 				6387772F1A3EC8CE00F95F87 /* ARViewController.mm */,
+				63D27B231A35CA31000EAF08 /* Images.xcassets */,
+				63D27B251A35CA31000EAF08 /* LaunchScreen.xib */,
+				63D27B161A35CA31000EAF08 /* Supporting Files */,
 			);
 			path = MPHome;
 			sourceTree = "<group>";
@@ -327,8 +329,8 @@
 				638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */,
 				635F42AF1A3851F100E5E911 /* Artwork.m in Sources */,
 				635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */,
+				639205B51A442A6B00EDE3F5 /* FakeDataLoader.m in Sources */,
 				63D27B191A35CA31000EAF08 /* main.m in Sources */,
-				635F42B31A38522600E5E911 /* MPDataLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

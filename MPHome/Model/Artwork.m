@@ -14,7 +14,7 @@
     if (!(self = [super init]))
         return nil;
     
-    _name = name;
+    _title = name;
     _width = width;
     _height = height;
     

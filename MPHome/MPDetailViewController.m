@@ -8,7 +8,7 @@
 
 #import "MPDetailViewController.h"
 #import "Artwork.h"
-#import "MPDataLoader.h"
+#import "FakeDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
 #import <QuartzCore/QuartzCore.h>
@@ -29,7 +29,7 @@
     if (!(self = [super init]))
         return nil;
     _contentHeight = 0;
-    _artwork = [[MPDataLoader sharedInstance]loadDataById:itemId];
+    _artwork = [[FakeDataLoader sharedInstance]getArtworkDetail:itemId];
     CGRect fullscreenRect = [[UIScreen mainScreen]applicationFrame];
     _scrollview = [[UIScrollView alloc] initWithFrame:fullscreenRect];
     _scrollview.contentSize = CGSizeMake(320, 758);
@@ -37,7 +37,7 @@
     
     [self.view addSubview:_scrollview];
     [self addImageView];
-    [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artist];
+    [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artistName];
     [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%d x %d", _artwork.width, _artwork.height]];
     [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
     
@@ -52,7 +52,7 @@
     _imageNode = [[ASNetworkImageNode alloc]init];
     _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     
-    _imageNode.URL = [NSURL URLWithString:_artwork.imageUrlString];
+    _imageNode.URL = [NSURL URLWithString:_artwork.featureUrlString];
     //_imageNode.URL = [NSURL URLWithString:@"http://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg/888px-Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg?uselang=en-gb"];
     int width = [[UIScreen mainScreen]applicationFrame].size.width;
     int height = (float)_artwork.height / _artwork.width * width;
@@ -61,7 +61,7 @@
     // height
     _contentHeight += height;
     
-    NSLog(@"Fetching image from %@", _artwork.imageUrlString);
+    NSLog(@"Fetching image from %@", _artwork.featureUrlString);
     
     _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];
