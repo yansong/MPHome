@@ -27,7 +27,12 @@
         return nil;
 
     // initialize data
-    _masterpieces = [[FakeDataLoader sharedInstance]listArtworks];
+    //_masterpieces = [[FakeDataLoader sharedInstance]getArtworks];
+    [[FakeDataLoader sharedInstance]getArtworksWithCompletion:^(NSMutableArray *artworks, NSError *error) {
+        if (artworks != nil) {
+            _masterpieces = artworks;
+        }
+    }];
     
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -62,7 +67,7 @@
 
 #pragma mark - UITablevieDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"row %d selected", indexPath.row);
+    NSLog(@"row %ld selected", (long)indexPath.row);
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:@"1"];
     detailView.delegate = self;
     

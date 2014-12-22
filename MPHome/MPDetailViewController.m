@@ -38,7 +38,7 @@
     [self.view addSubview:_scrollview];
     [self addImageView];
     [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artistName];
-    [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%d x %d", _artwork.width, _artwork.height]];
+    [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%ld x %ld", (long)_artwork.width, (long)_artwork.height]];
     [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
     
     // adjust scrollview height

@@ -9,23 +9,29 @@
 #import <Foundation/Foundation.h>
 #import "Artwork.h"
 
+typedef void (^ArtworkResultBlock)(Artwork *artwork, NSError *error);
+typedef void (^ArtworksResultBlock)(NSMutableArray *artworks, NSError *error);
+
 @protocol MPDataLoaderProtocol <NSObject>
 
 @required
 
 // returns detailed artwork information
 - (Artwork *)getArtworkDetail:(NSString *)artworkId;
+- (void)getArtworkDetail:(NSString *)artworkId completion:(ArtworkResultBlock)completion;
+//- (void)getArtworkDetail:(NSString *)artworkId completion:(void (^)(Artwork *artwork, NSError* error))completion;
 
 // get brief artwork list
-- (NSMutableArray *)listArtworks;
+- (NSMutableArray *)getArtworks;
+- (void)getArtworksWithCompletion:(ArtworksResultBlock)completion;
 
 // get a range of artworks
-- (NSMutableArray *)listArtworks:(NSInteger)start end:(NSInteger)end;
+- (NSMutableArray *)getArtworks:(NSInteger)start end:(NSInteger)end;
 
 @optional
 
 - (NSInteger)artworkTotal;
 
-- (NSMutableArray *)listArtworks:(NSInteger)count;
+- (NSMutableArray *)getArtworks:(NSInteger)count;
 
 @end
