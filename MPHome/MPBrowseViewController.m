@@ -9,6 +9,7 @@
 #import "MPBrowseViewController.h"
 #import "MPCellNode.h"
 #import "FakeDataLoader.h"
+#import "PFDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "MPDetailViewController.h"
 
@@ -27,10 +28,10 @@
         return nil;
 
     // initialize data
-    //_masterpieces = [[FakeDataLoader sharedInstance]getArtworks];
-    [[FakeDataLoader sharedInstance]getArtworksWithCompletion:^(NSMutableArray *artworks, NSError *error) {
+    [[PFDataLoader sharedInstance]getArtworksWithCompletion:^(NSMutableArray *artworks, NSError *error) {
         if (artworks != nil) {
             _masterpieces = artworks;
+            [_tableView reloadData];
         }
     }];
     
@@ -54,6 +55,10 @@
     _tableView.frame = self.view.bounds;
 }
 
+// Disable auto rotate
+- (BOOL)shouldAutorotate {
+    return NO;
+}
 
 #pragma mark - ASTableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -61,14 +66,16 @@
 }
 
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MPCellNode *node = [[MPCellNode alloc]initWithArtwork:_masterpieces[indexPath.row]];
+    Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
+    MPCellNode *node = [[MPCellNode alloc]initWithArtwork:artwork];
     return node;
 }
 
 #pragma mark - UITablevieDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"row %ld selected", (long)indexPath.row);
-    MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:@"1"];
+    Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
+    MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:artwork.artworkId];
     detailView.delegate = self;
     
     [self presentViewController:detailView animated:NO completion:nil];

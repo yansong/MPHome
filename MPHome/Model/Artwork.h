@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Artwork : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *artworkId;
-@property NSInteger width;          // artwork width in mm
-@property NSInteger height;         // artwork height in mm
+@property NSInteger width;
+@property NSInteger height;
 @property (nonatomic, strong) NSString *artistName;
 @property (nonatomic, strong) NSString *createYear;
 @property (nonatomic, strong) NSString *theDescription;
@@ -24,5 +25,6 @@
 @property (nonatomic, strong) NSString *currentLocation;
 
 - (instancetype)initWithName:(NSString *)name width:(NSInteger)width height:(NSInteger)height;
+- (instancetype)initWithPFObject:(PFObject *)obj;
 
 @end

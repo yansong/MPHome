@@ -9,6 +9,7 @@
 #import "MPDetailViewController.h"
 #import "Artwork.h"
 #import "FakeDataLoader.h"
+#import "PFDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
 #import <QuartzCore/QuartzCore.h>
@@ -29,7 +30,16 @@
     if (!(self = [super init]))
         return nil;
     _contentHeight = 0;
-    _artwork = [[FakeDataLoader sharedInstance]getArtworkDetail:itemId];
+    [[PFDataLoader sharedInstance] getArtworkDetail:itemId completion:^(Artwork *artwork, NSError *error) {
+        NSLog(@"Artwork %@", artwork);
+        _artwork = artwork;
+        [self buildDetailView];
+    }];
+
+    return self;
+}
+
+- (void)buildDetailView {
     CGRect fullscreenRect = [[UIScreen mainScreen]applicationFrame];
     _scrollview = [[UIScrollView alloc] initWithFrame:fullscreenRect];
     _scrollview.contentSize = CGSizeMake(320, 758);
@@ -38,14 +48,13 @@
     [self.view addSubview:_scrollview];
     [self addImageView];
     [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artistName];
-    [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%ld x %ld", (long)_artwork.width, (long)_artwork.height]];
+    [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
     [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(320, _contentHeight);
     //[self addARButton];
     [self addDismissButton];
-    return self;
 }
 
 - (void)addImageView {
@@ -53,7 +62,6 @@
     _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     
     _imageNode.URL = [NSURL URLWithString:_artwork.featureUrlString];
-    //_imageNode.URL = [NSURL URLWithString:@"http://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg/888px-Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg?uselang=en-gb"];
     int width = [[UIScreen mainScreen]applicationFrame].size.width;
     int height = (float)_artwork.height / _artwork.width * width;
     
@@ -129,6 +137,10 @@
                                options:0
                                metrics:nil
                                views:NSDictionaryOfVariableBindings(arButton)]];
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
 }
 
 - (void)dismiss:(id)sender

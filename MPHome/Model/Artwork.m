@@ -21,4 +21,19 @@
     return self;
 }
 
+- (instancetype)initWithPFObject:(PFObject *)obj {
+    if (!(self = [super init]))
+        return nil;
+    
+    self.title = [obj objectForKey:@"title"];
+    self.thumbnailUrlString = [obj objectForKey:@"thumbnail_url"];
+    self.featureUrlString = [obj objectForKey:@"feature_url"];
+    self.artistName = [obj objectForKey:@"artist"];
+    self.width = [[obj objectForKey:@"width"] intValue];
+    self.height = [[obj objectForKey:@"height"] intValue];
+    self.artworkId = [obj objectForKey:@"uid"];
+    self.theDescription = [obj objectForKey:@"description"];
+    return self;
+}
+
 @end
