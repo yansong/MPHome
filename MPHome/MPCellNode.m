@@ -26,12 +26,17 @@
     if (!(self = [super init]))
         return nil;
     
+    [self buildCellWithArtwork:artwork];
+    return self;
+}
+
+- (void)buildCellWithArtwork:(Artwork *)artwork {
     _artwork = artwork;
     _imageNode = [[ASNetworkImageNode alloc]init];
     _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
-
-    _imageNode.URL = [NSURL URLWithString:artwork.featureUrlString];
-    NSLog(@"Fetching image from %@", artwork.featureUrlString);
+    
+    _imageNode.URL = [NSURL URLWithString:artwork.thumbnailUrlString];
+    NSLog(@"Fetching image from %@", artwork.thumbnailUrlString);
     [self addSubnode:_imageNode];
     
     _textNode = [[ASTextNode alloc]init];
@@ -39,7 +44,6 @@
     _textNode.attributedString = [TextFormatter formatTextForTitle:artwork.title Content:artwork.artistName];
     _textNode.backgroundColor = [UIColor whiteColor];
     [self addSubnode:_textNode];
-    return self;
 }
 
 #pragma mark - ASDisplayNode overrides

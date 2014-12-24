@@ -12,5 +12,6 @@
 @interface MPCellNode : ASCellNode
 
 - (instancetype)initWithArtwork: (Artwork *)artwork;
+- (void)buildCellWithArtwork:(Artwork *)artwork;
 
 @end

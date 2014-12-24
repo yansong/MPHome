@@ -39,7 +39,14 @@
     return artwork;
 }
 
-- (NSMutableArray *)listArtworks:(NSInteger)start end:(NSInteger)end {
+- (void)getArtworkDetail:(NSString *)artworkId completion:(ArtworkResultBlock)completion {
+    if (completion) {
+        Artwork *artwork = [self getArtworkDetail:artworkId];
+        completion(artwork, nil);
+    }
+}
+
+- (NSMutableArray *)getArtworks:(NSInteger)start end:(NSInteger)end {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     for (int i = 0; i < end - start; i++) {
         // random width and height between 400 and 1200, multiplied by 10
@@ -55,12 +62,19 @@
     return data;
 }
 
-- (NSMutableArray *)listArtworks {
-    return [self listArtworks:20];
+- (void)getArtworksWithCompletion:(ArtworksResultBlock)completion {
+    if (completion) {
+        NSMutableArray *data = [self getArtworks];
+        completion(data, nil);
+    }
 }
 
-- (NSMutableArray *)listArtworks:(NSInteger)count {
-    return [self listArtworks:0 end:count];
+- (NSMutableArray *)getArtworks {
+    return [self getArtworks:20];
+}
+
+- (NSMutableArray *)getArtworks:(NSInteger)count {
+    return [self getArtworks:0 end:count];
 }
 
 @end

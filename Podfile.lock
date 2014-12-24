@@ -1,27 +1,29 @@
 PODS:
-  - AsyncDisplayKit (1.0.1):
-    - AsyncDisplayKit/ASDealloc2MainObject (= 1.0.1)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.0.1)
+  - AsyncDisplayKit (1.1):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.1)
   - LoremIpsum (1.0.0)
   - pop (1.0.7)
 
 DEPENDENCIES:
-  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, branch `master`)
+  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, commit `4cde4a752f97fdaa9bfcc5558be31932fc1130c8`, branch `master`)
   - LoremIpsum (~> 1.0)
   - pop (~> 1.0)
 
 EXTERNAL SOURCES:
   AsyncDisplayKit:
     :branch: master
+    :commit: 4cde4a752f97fdaa9bfcc5558be31932fc1130c8
     :git: https://github.com/facebook/AsyncDisplayKit.git
 
 CHECKOUT OPTIONS:
   AsyncDisplayKit:
-    :commit: d8c1d71f244c4880c310bf42545c6491690174df
+    :branch: master
+    :commit: 4cde4a752f97fdaa9bfcc5558be31932fc1130c8
     :git: https://github.com/facebook/AsyncDisplayKit.git
 
 SPEC CHECKSUMS:
-  AsyncDisplayKit: 32535beafd034dc745673055ed3535fed97bb6f0
+  AsyncDisplayKit: f329ac657754a4d1577a89adaba088fd0911ca6b
   LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
 
