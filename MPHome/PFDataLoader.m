@@ -17,8 +17,8 @@
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[PFDataLoader alloc]init];
         // set parse keys
-        [Parse setApplicationId:@"__app__id__"
-                      clientKey:@"__client__key__"];
+        [Parse setApplicationId:@"SKAMXdtfD893Zkm7YyN2gbSouWFMJdjLtIJifw1c"
+                      clientKey:@"UXpvzE96IrtMTOin9YISbfj2gdxGB3SUsSdEl0Qk"];
     });
     return _sharedInstance;
 }
