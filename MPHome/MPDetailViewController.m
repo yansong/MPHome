@@ -14,6 +14,7 @@
 #import "TextFormatter.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ARViewController.h"
+#import "MPSpinnerView.h"
 
 @interface MPDetailViewController()<ASNetworkImageNodeDelegate, ARViewControllerDelegate>
 {
@@ -21,6 +22,9 @@
     UIScrollView *_scrollview;
     ASNetworkImageNode *_imageNode;
     CGFloat _contentHeight;
+    CGFloat _contentWidth;
+    CGRect _frameRect;
+    MPSpinnerView *_spinner;
 }
 @end
 
@@ -33,17 +37,27 @@
     [[PFDataLoader sharedInstance] getArtworkDetail:itemId completion:^(Artwork *artwork, NSError *error) {
         NSLog(@"Artwork %@", artwork);
         _artwork = artwork;
+        
+        // set frame width and height
+        _frameRect = [[UIScreen mainScreen]applicationFrame];
+        
+        _contentWidth = _frameRect.size.width;
+        _contentHeight = 0; // we start at 0
+        
         [self buildDetailView];
     }];
 
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)buildDetailView {
-    CGRect fullscreenRect = [[UIScreen mainScreen]applicationFrame];
-    _scrollview = [[UIScrollView alloc] initWithFrame:fullscreenRect];
-    _scrollview.contentSize = CGSizeMake(320, 758);
-    _scrollview.backgroundColor = [UIColor lightGrayColor];
+    _scrollview = [[UIScrollView alloc] initWithFrame:_frameRect];
+    _scrollview.contentSize = _frameRect.size;
+    _scrollview.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:_scrollview];
     [self addImageView];
@@ -52,14 +66,13 @@
     [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
     
     // adjust scrollview height
-    _scrollview.contentSize = CGSizeMake(320, _contentHeight);
+    _scrollview.contentSize = CGSizeMake(_contentWidth, _contentHeight);
     //[self addARButton];
     [self addDismissButton];
 }
 
 - (void)addImageView {
     _imageNode = [[ASNetworkImageNode alloc]init];
-    _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     
     _imageNode.URL = [NSURL URLWithString:_artwork.featureUrlString];
     int width = [[UIScreen mainScreen]applicationFrame].size.width;
@@ -73,13 +86,18 @@
     
     _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];
+    
+    // Add spinner
+    _spinner = [[MPSpinnerView alloc]initWithImage:[UIImage imageNamed:@"spinnerWhite"] Frame:_imageNode.frame];
+    _spinner.backgroundColor = [UIColor blackColor];
+    [_scrollview addSubview:_spinner];
 }
 
 - (void)addInfoBlockWithTitle:(NSString *)title Content:(NSString *)content {
     ASTextNode *textNode = [[ASTextNode alloc]init];
     textNode.attributedString = [TextFormatter formatTextForTitle:title Content:content];
     CGFloat blockHeight = [TextFormatter heightForText:textNode.attributedString Width:320];
-    textNode.frame = CGRectMake(0, _contentHeight, 320, blockHeight);
+    textNode.frame = CGRectMake(0, _contentHeight, _contentWidth, blockHeight);
     _contentHeight += blockHeight;
     
     [_scrollview addSubview:textNode.view];
@@ -163,6 +181,7 @@
 # pragma mark - ASNetworkImageNodeDelegate
 - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image {
     NSLog(@"Image loaded");
+    [_spinner removeFromSuperview];
     [self addARButton];
 }
 

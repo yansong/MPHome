@@ -33,7 +33,7 @@
 - (void)buildCellWithArtwork:(Artwork *)artwork {
     _artwork = artwork;
     _imageNode = [[ASNetworkImageNode alloc]init];
-    _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
+//    _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     
     _imageNode.URL = [NSURL URLWithString:artwork.thumbnailUrlString];
     NSLog(@"Fetching image from %@", artwork.thumbnailUrlString);

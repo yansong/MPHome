@@ -12,12 +12,15 @@
 #import "PFDataLoader.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "MPDetailViewController.h"
+#import "MPSpinnerView.h"
 
 @interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
 {
     ASTableView *_tableView;
     NSMutableArray *_masterpieces;
+    MPSpinnerView *_spinner;
 }
+
 @end
 
 @implementation MPBrowseViewController
@@ -32,12 +35,15 @@
         if (artworks != nil) {
             _masterpieces = artworks;
             [_tableView reloadData];
+            if (_spinner) {
+                [_spinner removeFromSuperview];
+            }
         }
     }];
     
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.backgroundColor = [UIColor colorWithRed:0xe0 /255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
+//    _tableView.backgroundColor = [UIColor colorWithRed:0xe0 /255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     _tableView.asyncDataSource = self;
     _tableView.asyncDelegate = self;
     
@@ -47,8 +53,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View did load");
-    
+
     [self.view addSubview:_tableView];
+    _spinner = [[MPSpinnerView alloc]initWithImage:[UIImage imageNamed:@"spinner"] Frame:self.view.frame];
+    _spinner.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_spinner];
 }
 
 - (void)viewWillLayoutSubviews {
