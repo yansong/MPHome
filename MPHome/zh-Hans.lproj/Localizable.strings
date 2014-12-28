@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MPHome
+
+  Created by oasis on 12/28/14.
+  Copyright (c) 2014 watchpup. All rights reserved.
+*/
+"Artist" = "画家";
+"Size" = "原画尺寸（毫米）";
+"Year" = "创作时间";
+"Description" = "简介";

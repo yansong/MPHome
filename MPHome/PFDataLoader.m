@@ -35,6 +35,7 @@
 
 - (void)getArtworksWithCompletion:(ArtworksResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:@"Artwork"];
+    query.limit = 10;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"Successfully fetched %lu objects.", (unsigned long)objects.count);

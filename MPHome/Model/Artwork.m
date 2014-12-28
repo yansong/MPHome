@@ -33,6 +33,7 @@
     self.width = [[obj objectForKey:@"width"] intValue];
     self.height = [[obj objectForKey:@"height"] intValue];
     self.artworkId = [obj objectForKey:@"uid"];
+    self.createYear = [obj objectForKey:@"year"];
     
     // multilingual fields
     self.title = [self dataForLocalizedField:@"title" Data:obj];

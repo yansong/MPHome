@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MPHome
+
+  Created by oasis on 12/28/14.
+  Copyright (c) 2014 watchpup. All rights reserved.
+*/
+"Artist" = "Artist";
+"Size" = "Size in mm";
+"Year" = "Created Year";
+"Description" = "Description";

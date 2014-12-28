@@ -64,11 +64,13 @@ static const CGFloat kOuterHPadding = 10.0f;
     
     [self.view addSubview:_scrollview];
     [self addImageView];
-    [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artistName];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Artist", "Artist name") Content:_artwork.artistName];
     [self addSeparatorAt:_contentHeight++];
-    [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Size", "Artwork size") Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
     [self addSeparatorAt:_contentHeight++];
-    [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Year", "Created year") Content:_artwork.createYear];
+    [self addSeparatorAt:_contentHeight++];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Description", "Description of the artwork") Content:_artwork.theDescription];
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(_contentWidth, _contentHeight);

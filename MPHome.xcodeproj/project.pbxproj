@@ -32,6 +32,7 @@
 		639CE53B1A4BBE7800E01036 /* UIColor+ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 639CE53A1A4BBE7800E01036 /* UIColor+ThemeColors.m */; };
 		639CE53E1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 639CE53D1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m */; };
 		63BF0D421A4D5D8C00A0510C /* MPSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D411A4D5D8C00A0510C /* MPSpinnerView.m */; };
+		63BF0D461A50477900A0510C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D481A50477900A0510C /* Localizable.strings */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -89,6 +90,9 @@
 		639CE53D1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+ThemeStrings.m"; path = "Categories/NSAttributedString+ThemeStrings.m"; sourceTree = "<group>"; };
 		63BF0D401A4D5D8C00A0510C /* MPSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSpinnerView.h; sourceTree = "<group>"; };
 		63BF0D411A4D5D8C00A0510C /* MPSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSpinnerView.m; sourceTree = "<group>"; };
+		63BF0D451A503D2D00A0510C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		63BF0D471A50477900A0510C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		63BF0D491A50477F00A0510C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				63D27B171A35CA31000EAF08 /* Info.plist */,
+				63BF0D481A50477900A0510C /* Localizable.strings */,
 				63D27B181A35CA31000EAF08 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -337,6 +342,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 63D27B0A1A35CA31000EAF08;
 			productRefGroup = 63D27B141A35CA31000EAF08 /* Products */;
@@ -355,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D27B271A35CA31000EAF08 /* LaunchScreen.xib in Resources */,
+				63BF0D461A50477900A0510C /* Localizable.strings in Resources */,
 				63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,10 +448,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		63BF0D481A50477900A0510C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63BF0D471A50477900A0510C /* en */,
+				63BF0D491A50477F00A0510C /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		63D27B251A35CA31000EAF08 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				63D27B261A35CA31000EAF08 /* Base */,
+				63BF0D451A503D2D00A0510C /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
