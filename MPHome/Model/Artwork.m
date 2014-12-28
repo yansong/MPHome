@@ -25,15 +25,26 @@
     if (!(self = [super init]))
         return nil;
     
-    self.title = [obj objectForKey:@"title"];
+    // string fields
     self.thumbnailUrlString = [obj objectForKey:@"thumbnail_url"];
     self.featureUrlString = [obj objectForKey:@"feature_url"];
-    self.artistName = [obj objectForKey:@"artist"];
+    
+    // int fields
     self.width = [[obj objectForKey:@"width"] intValue];
     self.height = [[obj objectForKey:@"height"] intValue];
     self.artworkId = [obj objectForKey:@"uid"];
-    self.theDescription = [obj objectForKey:@"description"];
+    
+    // multilingual fields
+    self.title = [self dataForLocalizedField:@"title" Data:obj];
+    self.artistName = [self dataForLocalizedField:@"artist" Data:obj];
+    self.theDescription = [self dataForLocalizedField:@"description" Data:obj];
     return self;
+}
+
+- (NSString *)dataForLocalizedField:(NSString *)field Data:(PFObject *)data{
+    PFObject *obj = [data objectForKey:field];
+
+    return [obj objectForKey:[[NSLocale currentLocale]localeIdentifier]];
 }
 
 @end

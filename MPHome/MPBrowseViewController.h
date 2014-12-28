@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PFDataLoader.h"
 
 @interface MPBrowseViewController : UIViewController
 

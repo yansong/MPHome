@@ -9,6 +9,11 @@
 #import "MPCellNode.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
+#import "UIColor+ThemeColors.h"
+
+static const CGFloat kOuterHPadding = 10.0f;
+static const CGFloat kOuterVPadding = 10.0f;
+//static const CGFloat kInnerPadding = 10.0f;
 
 @interface MPCellNode ()
 {
@@ -33,8 +38,8 @@
 - (void)buildCellWithArtwork:(Artwork *)artwork {
     _artwork = artwork;
     _imageNode = [[ASNetworkImageNode alloc]init];
-//    _imageNode.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
     
+    _imageNode.backgroundColor = [UIColor imageBackgroundColor];
     _imageNode.URL = [NSURL URLWithString:artwork.thumbnailUrlString];
     NSLog(@"Fetching image from %@", artwork.thumbnailUrlString);
     [self addSubnode:_imageNode];
@@ -57,7 +62,7 @@
 - (void)layout {
     _imageNode.frame = CGRectMake(0, 0, _cellSize.width, (float)_artwork.height/_artwork.width * _cellSize.width);
     //CGSize textSize = _textNode.calculatedSize;
-    _textNode.frame = CGRectMake(0, _imageNode.frame.size.height, _cellSize.width, 60);
+    _textNode.frame = CGRectMake(kOuterHPadding, _imageNode.frame.size.height + kOuterVPadding, _cellSize.width - 2 * kOuterHPadding, 48);
 }
 
 @end

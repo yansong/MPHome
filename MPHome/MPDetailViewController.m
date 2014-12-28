@@ -16,6 +16,8 @@
 #import "ARViewController.h"
 #import "MPSpinnerView.h"
 
+static const CGFloat kOuterHPadding = 10.0f;
+
 @interface MPDetailViewController()<ASNetworkImageNodeDelegate, ARViewControllerDelegate>
 {
     Artwork* _artwork;
@@ -46,6 +48,7 @@
         
         [self buildDetailView];
     }];
+    self.view.backgroundColor = [UIColor whiteColor];
 
     return self;
 }
@@ -62,7 +65,9 @@
     [self.view addSubview:_scrollview];
     [self addImageView];
     [self addInfoBlockWithTitle:@"Artist" Content:_artwork.artistName];
+    [self addSeparatorAt:_contentHeight++];
     [self addInfoBlockWithTitle:@"Size" Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
+    [self addSeparatorAt:_contentHeight++];
     [self addInfoBlockWithTitle:@"Description" Content:_artwork.theDescription];
     
     // adjust scrollview height
@@ -97,10 +102,16 @@
     ASTextNode *textNode = [[ASTextNode alloc]init];
     textNode.attributedString = [TextFormatter formatTextForTitle:title Content:content];
     CGFloat blockHeight = [TextFormatter heightForText:textNode.attributedString Width:320];
-    textNode.frame = CGRectMake(0, _contentHeight, _contentWidth, blockHeight);
-    _contentHeight += blockHeight;
+    textNode.frame = CGRectMake(kOuterHPadding, _contentHeight + kOuterHPadding, _contentWidth - 2 * kOuterHPadding, blockHeight + 2 * kOuterHPadding);
+    _contentHeight += blockHeight + 2 * kOuterHPadding;
     
     [_scrollview addSubview:textNode.view];
+}
+
+- (void)addSeparatorAt:(CGFloat)y{
+    UIView *separator = [[UIView alloc]initWithFrame:CGRectMake(3, y, 320, 1)];
+    separator.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1];
+    [_scrollview addSubview:separator];
 }
 
 - (void)addDismissButton {

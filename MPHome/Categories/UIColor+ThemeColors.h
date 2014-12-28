@@ -13,5 +13,6 @@
 + (UIColor *)titleColor;
 + (UIColor *)subtitleColor;
 + (UIColor *)contentTextColor;
++ (UIColor *)imageBackgroundColor;
 
 @end

@@ -9,7 +9,7 @@
 #import "MPBrowseViewController.h"
 #import "MPCellNode.h"
 #import "FakeDataLoader.h"
-#import "PFDataLoader.h"
+
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "MPDetailViewController.h"
 #import "MPSpinnerView.h"
@@ -43,7 +43,8 @@
     
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-//    _tableView.backgroundColor = [UIColor colorWithRed:0xe0 /255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1.0];
+    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.asyncDataSource = self;
     _tableView.asyncDelegate = self;
     
@@ -54,6 +55,9 @@
     [super viewDidLoad];
     NSLog(@"View did load");
 
+    // register cell class
+    //NSString *cellIdentifier = @"MPCellIdentifier";
+    //[_tableView registerClass:[MPCellNode class] forCellReuseIdentifier:cellIdentifier];
     [self.view addSubview:_tableView];
     _spinner = [[MPSpinnerView alloc]initWithImage:[UIImage imageNamed:@"spinner"] Frame:self.view.frame];
     _spinner.backgroundColor = [UIColor whiteColor];
@@ -75,6 +79,9 @@
 }
 
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //NSString *cellIdentifier = @"MPCellIdentifier";
+
+    //MPCellNode *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
     MPCellNode *node = [[MPCellNode alloc]initWithArtwork:artwork];
     return node;
@@ -83,6 +90,7 @@
 #pragma mark - UITablevieDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"row %ld selected", (long)indexPath.row);
+    
     Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:artwork.artworkId];
     detailView.delegate = self;

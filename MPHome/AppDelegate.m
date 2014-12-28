@@ -21,7 +21,6 @@
     
     MPBrowseViewController *browseViewController = [MPBrowseViewController new];
     [self.window setRootViewController:browseViewController];
-//    self.window.backgroundColor = [UIColor colorWithRed:0xfa / 255.0 green:0xfa / 255.0 blue:0xfa / 255.0 alpha:1.0];
     [self.window makeKeyAndVisible];
     return YES;
 }
