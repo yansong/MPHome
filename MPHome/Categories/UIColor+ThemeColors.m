@@ -25,6 +25,14 @@
     return [self colorWithRed:0xE0 green:0xE0 blue:0xE0];
 }
 
++ (UIColor *)barItemTextColor {
+    return [self colorWithRed:0xE0 green:0xE0 blue:0xE0];
+}
+
++ (UIColor *)barTintColor {
+    return [self colorWithRed:0x21 green:0x21 blue:0x21];
+}
+
 + (UIColor *)colorWithRed:(NSUInteger)red
                     green:(NSUInteger)green
                      blue:(NSUInteger)blue

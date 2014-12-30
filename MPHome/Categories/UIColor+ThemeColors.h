@@ -14,5 +14,7 @@
 + (UIColor *)subtitleColor;
 + (UIColor *)contentTextColor;
 + (UIColor *)imageBackgroundColor;
++ (UIColor *)barItemTextColor;
++ (UIColor *)barTintColor;
 
 @end

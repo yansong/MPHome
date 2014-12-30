@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MPBrowseViewController.h"
+#import "UIColor+ThemeColors.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MPBrowseViewController *browseViewController = [MPBrowseViewController new];
-    [self.window setRootViewController:browseViewController];
+    
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:browseViewController];
+    
+    // Set navigation bar color
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+
+    // Set status bar text to white
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

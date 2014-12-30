@@ -14,12 +14,18 @@
 #import "MPDetailViewController.h"
 #import "MPSpinnerView.h"
 
+#import "MPRefreshController.h"
+#import "UIColor+ThemeColors.h"
+
 @interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
 {
     ASTableView *_tableView;
     NSMutableArray *_masterpieces;
     MPSpinnerView *_spinner;
+    BOOL _isLoadingMore;
 }
+
+@property(nonatomic, strong) MPRefreshController *refreshController;
 
 @end
 
@@ -53,15 +59,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"View did load");
 
-    // register cell class
-    //NSString *cellIdentifier = @"MPCellIdentifier";
-    //[_tableView registerClass:[MPCellNode class] forCellReuseIdentifier:cellIdentifier];
+    self.title = NSLocalizedString(@"Browse", @"Title of browse view");
+
+    [self addInfoButton];
+    
     [self.view addSubview:_tableView];
     _spinner = [[MPSpinnerView alloc]initWithImage:[UIImage imageNamed:@"spinner"] Frame:self.view.frame];
     _spinner.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_spinner];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+//    [self.navigationController.navigationBar setTranslucent:YES];
+    //set title and title color
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor barItemTextColor] forKey:NSForegroundColorAttributeName]];
+    //set back button color
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor barItemTextColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    //set back button arrow color
+    [self.navigationController.navigationBar setTintColor:[UIColor barItemTextColor]];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -71,6 +87,29 @@
 // Disable auto rotate
 - (BOOL)shouldAutorotate {
     return NO;
+}
+
+- (void)addInfoButton {
+    UIBarButtonItem *infoButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btnMenu"] style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = infoButton;
+    
+    // remove back button text
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat currentOffset = scrollView.contentOffset.y;
+    CGFloat maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    
+    if ((maximumOffset - currentOffset <= 15.0) && !_isLoadingMore) {
+        NSLog(@"currentOffset %f, maximumOffset %f", currentOffset, maximumOffset);
+        [self loadMoreData];
+    }
+}
+
+- (void)loadMoreData {
+    NSLog(@"Loading more data...");
+    _isLoadingMore = YES;
 }
 
 #pragma mark - ASTableViewDataSource
@@ -95,7 +134,8 @@
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:artwork.artworkId];
     detailView.delegate = self;
     
-    [self presentViewController:detailView animated:NO completion:nil];
+    //[self presentViewController:detailView animated:NO completion:nil];
+    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 #pragma mark - DetailViewControllerDelegate

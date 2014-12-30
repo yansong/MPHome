@@ -54,13 +54,16 @@ static const CGFloat kOuterHPadding = 10.0f;
 }
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 - (void)buildDetailView {
     _scrollview = [[UIScrollView alloc] initWithFrame:_frameRect];
     _scrollview.contentSize = _frameRect.size;
     _scrollview.backgroundColor = [UIColor whiteColor];
+    _contentHeight = 44.0;
+    
+    self.title = _artwork.title;
     
     [self.view addSubview:_scrollview];
     [self addImageView];
