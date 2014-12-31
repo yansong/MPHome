@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MPBrowseViewController.h"
 #import "UIColor+ThemeColors.h"
+#import "MPPortaitNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,7 @@
     
     MPBrowseViewController *browseViewController = [MPBrowseViewController new];
     
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:browseViewController];
+    self.window.rootViewController = [[MPPortaitNavigationController alloc]initWithRootViewController:browseViewController];
     
     // Set navigation bar color
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];

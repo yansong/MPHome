@@ -92,7 +92,7 @@ static const CGFloat kOuterHPadding = 10.0f;
     // height
     _contentHeight += height;
     
-    NSLog(@"Fetching image from %@", _artwork.featureUrlString);
+//    NSLog(@"Fetching image from %@", _artwork.featureUrlString);
     
     _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];

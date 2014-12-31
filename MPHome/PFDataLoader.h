@@ -12,5 +12,6 @@
 @interface PFDataLoader : NSObject<MPDataLoaderProtocol>
 
 + (instancetype)sharedInstance;
+@property (readonly) NSInteger itemsPerRequest;
 
 @end

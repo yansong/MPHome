@@ -41,7 +41,7 @@ static const CGFloat kOuterVPadding = 10.0f;
     
     _imageNode.backgroundColor = [UIColor imageBackgroundColor];
     _imageNode.URL = [NSURL URLWithString:artwork.thumbnailUrlString];
-    NSLog(@"Fetching image from %@", artwork.thumbnailUrlString);
+//    NSLog(@"Fetching image from %@", artwork.thumbnailUrlString);
     [self addSubnode:_imageNode];
     
     _textNode = [[ASTextNode alloc]init];

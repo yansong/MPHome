@@ -23,6 +23,7 @@
     NSMutableArray *_masterpieces;
     MPSpinnerView *_spinner;
     BOOL _isLoadingMore;
+    BOOL _reachedEnd;
 }
 
 @property(nonatomic, strong) MPRefreshController *refreshController;
@@ -46,7 +47,7 @@
             }
         }
     }];
-    
+
     // initialize tableview
     _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -71,7 +72,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    [self.navigationController.navigationBar setTranslucent:YES];
     //set title and title color
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor barItemTextColor] forKey:NSForegroundColorAttributeName]];
     //set back button color
@@ -97,19 +97,22 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat currentOffset = scrollView.contentOffset.y;
-    CGFloat maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-    
-    if ((maximumOffset - currentOffset <= 15.0) && !_isLoadingMore) {
-        NSLog(@"currentOffset %f, maximumOffset %f", currentOffset, maximumOffset);
-        [self loadMoreData];
-    }
-}
-
 - (void)loadMoreData {
     NSLog(@"Loading more data...");
-    _isLoadingMore = YES;
+    [[PFDataLoader sharedInstance]getArtworksWithCompletion:^(NSMutableArray *artworks, NSError *error) {
+        if (artworks != nil) {
+            if (artworks.count < [[PFDataLoader sharedInstance]itemsPerRequest]) {
+                NSLog(@"We hit end");
+                _reachedEnd = YES;
+            }
+            [_masterpieces addObjectsFromArray:artworks];
+            [_tableView reloadData];
+        }
+        else {
+            _reachedEnd = YES;
+        }
+    }];
+
 }
 
 #pragma mark - ASTableViewDataSource
@@ -123,10 +126,11 @@
     //MPCellNode *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
     MPCellNode *node = [[MPCellNode alloc]initWithArtwork:artwork];
+    
     return node;
 }
 
-#pragma mark - UITablevieDelegate
+#pragma mark - UITableviewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"row %ld selected", (long)indexPath.row);
     
@@ -136,6 +140,12 @@
     
     //[self presentViewController:detailView animated:NO completion:nil];
     [self.navigationController pushViewController:detailView animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayNodeForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == _masterpieces.count - 1 && !_reachedEnd) {
+        [self loadMoreData];
+    }
 }
 
 #pragma mark - DetailViewControllerDelegate

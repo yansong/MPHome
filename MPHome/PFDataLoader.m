@@ -9,10 +9,13 @@
 #import "PFDataLoader.h"
 #import <Parse/Parse.h>
 
+static NSInteger _itemRetrieved = 0;
+
 @implementation PFDataLoader
 
 + (instancetype)sharedInstance {
     static PFDataLoader* _sharedInstance = NULL;
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[PFDataLoader alloc]init];
@@ -21,6 +24,10 @@
                       clientKey:@"UXpvzE96IrtMTOin9YISbfj2gdxGB3SUsSdEl0Qk"];
     });
     return _sharedInstance;
+}
+
+- (NSInteger)itemsPerRequest {
+    return 10;
 }
 
 #pragma mark - MPDataLoaderProtocol
@@ -35,10 +42,14 @@
 
 - (void)getArtworksWithCompletion:(ArtworksResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:@"Artwork"];
-    query.limit = 10;
+
+    query.limit = [self itemsPerRequest];
+    query.skip = _itemRetrieved;
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"Successfully fetched %lu objects.", (unsigned long)objects.count);
+            _itemRetrieved += objects.count;
             NSMutableArray *artworks = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
                 [artworks addObject:object];
