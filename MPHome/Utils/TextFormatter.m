@@ -36,4 +36,11 @@
     CGRect rect = [text boundingRectWithSize:CGSizeMake(width, 10000) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
     return rect.size.height;
 }
+
++ (NSAttributedString *)formatHelpText:(NSString *)text {
+    UIFont *font = [UIFont systemFontOfSize:16.0f];
+    NSDictionary *attrDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:text attributes:attrDictionary];
+    return string;
+}
 @end

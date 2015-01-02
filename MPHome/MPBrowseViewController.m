@@ -17,6 +17,8 @@
 #import "MPRefreshController.h"
 #import "UIColor+ThemeColors.h"
 
+#import "MPAboutViewController.h"
+
 @interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
 {
     ASTableView *_tableView;
@@ -90,11 +92,17 @@
 }
 
 - (void)addInfoButton {
-    UIBarButtonItem *infoButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btnMenu"] style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *infoButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btnMenu"] style:UIBarButtonItemStylePlain target:self action:@selector(showAbout)];
     self.navigationItem.rightBarButtonItem = infoButton;
     
     // remove back button text
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+
+- (void)showAbout {
+    NSLog(@"Show about");
+    MPAboutViewController *vc = [[MPAboutViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadMoreData {
@@ -126,6 +134,7 @@
     //MPCellNode *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
     MPCellNode *node = [[MPCellNode alloc]initWithArtwork:artwork];
+    node.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return node;
 }

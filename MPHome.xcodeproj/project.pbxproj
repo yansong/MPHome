@@ -37,6 +37,7 @@
 		63BF0D5E1A5176B800A0510C /* MPRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D5D1A5176B800A0510C /* MPRefreshController.m */; };
 		63BF0D611A537D6400A0510C /* MPPortaitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D601A537D6400A0510C /* MPPortaitNavigationController.m */; };
 		63BF0D641A54172900A0510C /* MPFullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D631A54172900A0510C /* MPFullscreenImageViewController.m */; };
+		63BF0D6A1A56DEEB00A0510C /* MPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D691A56DEEB00A0510C /* MPAboutViewController.m */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -105,6 +106,8 @@
 		63BF0D601A537D6400A0510C /* MPPortaitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPortaitNavigationController.m; sourceTree = "<group>"; };
 		63BF0D621A54172900A0510C /* MPFullscreenImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFullscreenImageViewController.h; sourceTree = "<group>"; };
 		63BF0D631A54172900A0510C /* MPFullscreenImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFullscreenImageViewController.m; sourceTree = "<group>"; };
+		63BF0D681A56DEEB00A0510C /* MPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAboutViewController.h; sourceTree = "<group>"; };
+		63BF0D691A56DEEB00A0510C /* MPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAboutViewController.m; sourceTree = "<group>"; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				63BF0D5D1A5176B800A0510C /* MPRefreshController.m */,
 				635F42A71A374BA200E5E911 /* MPBrowseViewController.h */,
 				635F42A81A374BA200E5E911 /* MPBrowseViewController.m */,
+				63BF0D681A56DEEB00A0510C /* MPAboutViewController.h */,
+				63BF0D691A56DEEB00A0510C /* MPAboutViewController.m */,
 				635F42AA1A37F15700E5E911 /* MPCellNode.h */,
 				635F42AB1A37F15700E5E911 /* MPCellNode.m */,
 				635F42B41A3946BC00E5E911 /* MPDetailViewController.h */,
@@ -448,6 +453,7 @@
 				639CE53E1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m in Sources */,
 				635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */,
 				639205B51A442A6B00EDE3F5 /* FakeDataLoader.m in Sources */,
+				63BF0D6A1A56DEEB00A0510C /* MPAboutViewController.m in Sources */,
 				63D27B191A35CA31000EAF08 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,5 +13,6 @@
 
 + (NSAttributedString *)formatTextForTitle:(NSString *)title Content:(NSString *)content;
 + (CGFloat)heightForText:(NSAttributedString *)text Width:(CGFloat)width;
++ (NSAttributedString *)formatHelpText:(NSString *)text;
 
 @end
