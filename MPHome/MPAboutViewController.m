@@ -39,6 +39,7 @@
     self.aboutViewHeight= [TextFormatter heightForText:self.aboutTextView.attributedText Width:[[UIScreen mainScreen] applicationFrame].size.width];
     frame.size.height = self.aboutViewHeight + 10;
     self.aboutTextView.frame = frame;
+    self.aboutTextView.editable = NO;
     
     [self.aboutCell addSubview:self.aboutTextView];
     
@@ -46,9 +47,13 @@
     self.helpCell = [[UITableViewCell alloc]init];
     self.helpTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
     self.helpTextView.attributedText = [TextFormatter formatHelpText:NSLocalizedString(@"HelpText", @"Help text")];
+//    NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:@"Google"];
+//    [str addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: NSMakeRange(0, str.length)];
+//    yourTextField.attributedText = str;
     self.helpViewHeight = [TextFormatter heightForText:self.helpTextView.attributedText Width:[[UIScreen mainScreen] applicationFrame].size.width];
     frame.size.height = self.helpViewHeight + 10;
     self.helpTextView.frame = frame;
+    self.helpTextView.editable = NO;
     
     [self.helpCell addSubview:self.helpTextView];
 }
