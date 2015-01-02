@@ -13,12 +13,12 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "TextFormatter.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ARViewController.h"
 #import "MPSpinnerView.h"
+#import "MPFullscreenImageViewController.h"
 
 static const CGFloat kOuterHPadding = 10.0f;
 
-@interface MPDetailViewController()<ASNetworkImageNodeDelegate, ARViewControllerDelegate>
+@interface MPDetailViewController()<ASNetworkImageNodeDelegate>
 {
     Artwork* _artwork;
     UIScrollView *_scrollview;
@@ -42,9 +42,11 @@ static const CGFloat kOuterHPadding = 10.0f;
         
         // set frame width and height
         _frameRect = [[UIScreen mainScreen]applicationFrame];
+        _frameRect.origin.y += 44.0f;
+        _frameRect.size.height -= 44.0f;
         
         _contentWidth = _frameRect.size.width;
-        _contentHeight = 0; // we start at 0
+        //_contentHeight = 0; // we start at 0
         
         [self buildDetailView];
     }];
@@ -53,15 +55,18 @@ static const CGFloat kOuterHPadding = 10.0f;
     return self;
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
+//- (BOOL)prefersStatusBarHidden {
+//    return NO;
+//}
+
 
 - (void)buildDetailView {
     _scrollview = [[UIScrollView alloc] initWithFrame:_frameRect];
     _scrollview.contentSize = _frameRect.size;
     _scrollview.backgroundColor = [UIColor whiteColor];
-    _contentHeight = 44.0;
+    
+    // reserve the navigation and status bar space
+    //_contentHeight = 44.0;
     
     self.title = _artwork.title;
     
@@ -77,8 +82,6 @@ static const CGFloat kOuterHPadding = 10.0f;
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(_contentWidth, _contentHeight);
-    //[self addARButton];
-    [self addDismissButton];
 }
 
 - (void)addImageView {
@@ -91,8 +94,6 @@ static const CGFloat kOuterHPadding = 10.0f;
     _imageNode.frame = CGRectMake(0, _contentHeight, width, height);
     // height
     _contentHeight += height;
-    
-//    NSLog(@"Fetching image from %@", _artwork.featureUrlString);
     
     _imageNode.delegate = self;
     [_scrollview addSubview:_imageNode.view];
@@ -119,62 +120,15 @@ static const CGFloat kOuterHPadding = 10.0f;
     [_scrollview addSubview:separator];
 }
 
-- (void)addDismissButton {
-    UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
-    dismissButton.tintColor = [UIColor whiteColor];
-    //dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
-    
-    dismissButton.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
-    UIImage *buttonImage = [UIImage imageNamed:@"btnClose"];
-    [dismissButton setImage:buttonImage forState:UIControlStateNormal];
-    [dismissButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    dismissButton.layer.cornerRadius = 6;
-    dismissButton.clipsToBounds = YES;
-    [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:dismissButton];
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:[dismissButton]-20-|"
-                               options:0
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(dismissButton)]];
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:|-25-[dismissButton]"
-                               options:0
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(dismissButton)]];
-}
-
-- (void)addARButton {
-    UIButton *arButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    arButton.translatesAutoresizingMaskIntoConstraints = NO;
-    arButton.tintColor = [UIColor whiteColor];
-    //dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
-    
-    arButton.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
-    UIImage *buttonImage = [UIImage imageNamed:@"btnAR"];
-    [arButton setImage:buttonImage forState:UIControlStateNormal];
-    [arButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    arButton.layer.cornerRadius = 6;
-    arButton.clipsToBounds = NO;
-    [arButton addTarget:self action:@selector(showAR:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:arButton];
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:|-20-[arButton]"
-                               options:0
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(arButton)]];
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:|-25-[arButton]"
-                               options:0
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(arButton)]];
-}
-
 - (BOOL)shouldAutorotate {
     return NO;
+}
+
+- (void)imageViewTapped {
+    NSLog(@"Image node tapped");
+    MPFullscreenImageViewController *fullscreenVC = [[MPFullscreenImageViewController alloc]initWithImage:_imageNode.image];
+
+    [self presentViewController:fullscreenVC animated:YES completion:nil];
 }
 
 - (void)dismiss:(id)sender
@@ -187,23 +141,18 @@ static const CGFloat kOuterHPadding = 10.0f;
     }
 }
 
-- (void)showAR:(id)sender {
-    ARViewController *arViewController = [[ARViewController alloc]init];
-    arViewController.delegate = self;
-    
-    [self presentViewController:arViewController animated:NO completion:nil];
-}
-
 # pragma mark - ASNetworkImageNodeDelegate
 - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image {
     NSLog(@"Image loaded");
     [_spinner removeFromSuperview];
-    [self addARButton];
-}
+    
+    // enable tap to show fullscreen image view
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTapped)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    tapRecognizer.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tapRecognizer];
 
-#pragma mark - ARViewControllerDelegate
-- (void)didDismissARViewController {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    //[self addARButton];
 }
 
 @end

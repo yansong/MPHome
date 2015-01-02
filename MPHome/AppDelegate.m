@@ -31,6 +31,16 @@
     // Set status bar text to white
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    // first run detection
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
+        NSLog(@"App has launched before");
+    }
+    else {
+        NSLog(@"App first launch");
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
