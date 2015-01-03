@@ -13,6 +13,9 @@
 {
     UIImage *_image;
     UIScrollView *_scrollView;
+    
+    NSInteger _imageWidth;
+    NSInteger _imageHeight;
 }
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -26,10 +29,12 @@
 
 @implementation MPFullscreenImageViewController
 
-- (instancetype)initWithImage:(UIImage *)image {
+- (instancetype)initWithImage:(UIImage *)image Width:(NSInteger)width Height:(NSInteger)height {
     if (!(self = [super init]))
         return nil;
     _image = image;
+    _imageWidth = width;
+    _imageHeight = height;
     
     return self;
 }
@@ -60,6 +65,7 @@
     [self.scrollView addGestureRecognizer:twoFingerTapGesture];
     
     [self addDismissButton];
+    [self addARButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -187,7 +193,7 @@
 
 
 - (void)showAR:(id)sender {
-    ARViewController *arViewController = [[ARViewController alloc]init];
+    ARViewController *arViewController = [[ARViewController alloc]initWithImage:[_image CGImage] width:_imageWidth height:_imageHeight];
     arViewController.delegate = self;
     
     [self presentViewController:arViewController animated:NO completion:nil];

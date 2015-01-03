@@ -38,6 +38,21 @@
 		63BF0D611A537D6400A0510C /* MPPortaitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D601A537D6400A0510C /* MPPortaitNavigationController.m */; };
 		63BF0D641A54172900A0510C /* MPFullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D631A54172900A0510C /* MPFullscreenImageViewController.m */; };
 		63BF0D6A1A56DEEB00A0510C /* MPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D691A56DEEB00A0510C /* MPAboutViewController.m */; };
+		63BF0D711A57972400A0510C /* demoPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D6C1A57972400A0510C /* demoPic.png */; };
+		63BF0D721A57972400A0510C /* Simple.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D6D1A57972400A0510C /* Simple.fragsh */; };
+		63BF0D731A57972400A0510C /* Simple.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D6E1A57972400A0510C /* Simple.vertsh */; };
+		63BF0D741A57972400A0510C /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D6F1A57972400A0510C /* StonesAndChips.dat */; };
+		63BF0D751A57972400A0510C /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D701A57972400A0510C /* StonesAndChips.xml */; };
+		63BF0D781A57976200A0510C /* mpah_t01.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D761A57976200A0510C /* mpah_t01.dat */; };
+		63BF0D791A57976200A0510C /* mpah_t01.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63BF0D771A57976200A0510C /* mpah_t01.xml */; };
+		63BF0D7E1A5797AD00A0510C /* MPARSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D7C1A5797AD00A0510C /* MPARSession.mm */; };
+		63BF0D831A57982E00A0510C /* ARUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D7F1A57982E00A0510C /* ARUtilities.cpp */; };
+		63BF0D841A57982E00A0510C /* MPGLShaderUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D821A57982E00A0510C /* MPGLShaderUtils.m */; };
+		63BF0D871A5798E700A0510C /* AREAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63BF0D861A5798E700A0510C /* AREAGLView.mm */; };
+		63BF0D891A579B9500A0510C /* libVuforia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BF0D881A579B9500A0510C /* libVuforia.a */; };
+		63BF0D8B1A579BB300A0510C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BF0D8A1A579BB300A0510C /* CoreMedia.framework */; };
+		63BF0D8D1A579BBA00A0510C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BF0D8C1A579BBA00A0510C /* CoreMotion.framework */; };
+		63BF0D8F1A579BC500A0510C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BF0D8E1A579BC500A0510C /* AVFoundation.framework */; };
 		63D27B191A35CA31000EAF08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B181A35CA31000EAF08 /* main.m */; };
 		63D27B1C1A35CA31000EAF08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D27B1B1A35CA31000EAF08 /* AppDelegate.m */; };
 		63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D27B231A35CA31000EAF08 /* Images.xcassets */; };
@@ -108,6 +123,26 @@
 		63BF0D631A54172900A0510C /* MPFullscreenImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFullscreenImageViewController.m; sourceTree = "<group>"; };
 		63BF0D681A56DEEB00A0510C /* MPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAboutViewController.h; sourceTree = "<group>"; };
 		63BF0D691A56DEEB00A0510C /* MPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAboutViewController.m; sourceTree = "<group>"; };
+		63BF0D6C1A57972400A0510C /* demoPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoPic.png; sourceTree = "<group>"; };
+		63BF0D6D1A57972400A0510C /* Simple.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simple.fragsh; sourceTree = "<group>"; };
+		63BF0D6E1A57972400A0510C /* Simple.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simple.vertsh; sourceTree = "<group>"; };
+		63BF0D6F1A57972400A0510C /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = StonesAndChips.dat; sourceTree = "<group>"; };
+		63BF0D701A57972400A0510C /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = StonesAndChips.xml; sourceTree = "<group>"; };
+		63BF0D761A57976200A0510C /* mpah_t01.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = mpah_t01.dat; sourceTree = "<group>"; };
+		63BF0D771A57976200A0510C /* mpah_t01.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mpah_t01.xml; sourceTree = "<group>"; };
+		63BF0D7B1A5797AD00A0510C /* MPARSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPARSession.h; sourceTree = "<group>"; };
+		63BF0D7C1A5797AD00A0510C /* MPARSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MPARSession.mm; sourceTree = "<group>"; };
+		63BF0D7D1A5797AD00A0510C /* QuadPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadPlane.h; sourceTree = "<group>"; };
+		63BF0D7F1A57982E00A0510C /* ARUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ARUtilities.cpp; path = Utils/ARUtilities.cpp; sourceTree = "<group>"; };
+		63BF0D801A57982E00A0510C /* ARUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARUtilities.h; path = Utils/ARUtilities.h; sourceTree = "<group>"; };
+		63BF0D811A57982E00A0510C /* MPGLShaderUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPGLShaderUtils.h; path = Utils/MPGLShaderUtils.h; sourceTree = "<group>"; };
+		63BF0D821A57982E00A0510C /* MPGLShaderUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPGLShaderUtils.m; path = Utils/MPGLShaderUtils.m; sourceTree = "<group>"; };
+		63BF0D851A5798E700A0510C /* AREAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AREAGLView.h; sourceTree = "<group>"; };
+		63BF0D861A5798E700A0510C /* AREAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AREAGLView.mm; sourceTree = "<group>"; };
+		63BF0D881A579B9500A0510C /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = vuforia/lib/arm/libVuforia.a; sourceTree = "<group>"; };
+		63BF0D8A1A579BB300A0510C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		63BF0D8C1A579BBA00A0510C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		63BF0D8E1A579BC500A0510C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +162,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BF0D8F1A579BC500A0510C /* AVFoundation.framework in Frameworks */,
+				63BF0D8D1A579BBA00A0510C /* CoreMotion.framework in Frameworks */,
+				63BF0D8B1A579BB300A0510C /* CoreMedia.framework in Frameworks */,
+				63BF0D891A579B9500A0510C /* libVuforia.a in Frameworks */,
 				639206551A48506A00EDE3F5 /* Social.framework in Frameworks */,
 				639206531A48502A00EDE3F5 /* Security.framework in Frameworks */,
 				639206511A484F8A00EDE3F5 /* QuartzCore.framework in Frameworks */,
@@ -173,6 +212,10 @@
 			isa = PBXGroup;
 			children = (
 				63BF0D401A4D5D8C00A0510C /* MPSpinnerView.h */,
+				63BF0D7F1A57982E00A0510C /* ARUtilities.cpp */,
+				63BF0D801A57982E00A0510C /* ARUtilities.h */,
+				63BF0D811A57982E00A0510C /* MPGLShaderUtils.h */,
+				63BF0D821A57982E00A0510C /* MPGLShaderUtils.m */,
 				63BF0D411A4D5D8C00A0510C /* MPSpinnerView.m */,
 				6387772A1A3C6F7B00F95F87 /* TextFormatter.h */,
 				6387772B1A3C6F7B00F95F87 /* TextFormatter.m */,
@@ -189,6 +232,30 @@
 				639CE53D1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		63BF0D6B1A57972400A0510C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				63BF0D761A57976200A0510C /* mpah_t01.dat */,
+				63BF0D771A57976200A0510C /* mpah_t01.xml */,
+				63BF0D6C1A57972400A0510C /* demoPic.png */,
+				63BF0D6D1A57972400A0510C /* Simple.fragsh */,
+				63BF0D6E1A57972400A0510C /* Simple.vertsh */,
+				63BF0D6F1A57972400A0510C /* StonesAndChips.dat */,
+				63BF0D701A57972400A0510C /* StonesAndChips.xml */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		63BF0D7A1A5797AD00A0510C /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				63BF0D7B1A5797AD00A0510C /* MPARSession.h */,
+				63BF0D7C1A5797AD00A0510C /* MPARSession.mm */,
+				63BF0D7D1A5797AD00A0510C /* QuadPlane.h */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		63D27B0A1A35CA31000EAF08 = {
@@ -214,6 +281,10 @@
 		63D27B151A35CA31000EAF08 /* MPHome */ = {
 			isa = PBXGroup;
 			children = (
+				63BF0D851A5798E700A0510C /* AREAGLView.h */,
+				63BF0D861A5798E700A0510C /* AREAGLView.mm */,
+				63BF0D7A1A5797AD00A0510C /* AR */,
+				63BF0D6B1A57972400A0510C /* Assets */,
 				639CE5381A4BBDEE00E01036 /* Categories */,
 				638777291A3C6E4000F95F87 /* Utils */,
 				635F42B01A3851FE00E5E911 /* Model */,
@@ -273,6 +344,10 @@
 		71016DB249AC5D2361873233 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63BF0D8E1A579BC500A0510C /* AVFoundation.framework */,
+				63BF0D8C1A579BBA00A0510C /* CoreMotion.framework */,
+				63BF0D8A1A579BB300A0510C /* CoreMedia.framework */,
+				63BF0D881A579B9500A0510C /* libVuforia.a */,
 				639206541A48506A00EDE3F5 /* Social.framework */,
 				639206521A48502A00EDE3F5 /* Security.framework */,
 				639206501A484F8A00EDE3F5 /* QuartzCore.framework */,
@@ -384,10 +459,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BF0D731A57972400A0510C /* Simple.vertsh in Resources */,
+				63BF0D711A57972400A0510C /* demoPic.png in Resources */,
 				63D27B271A35CA31000EAF08 /* LaunchScreen.xib in Resources */,
+				63BF0D791A57976200A0510C /* mpah_t01.xml in Resources */,
+				63BF0D721A57972400A0510C /* Simple.fragsh in Resources */,
+				63BF0D751A57972400A0510C /* StonesAndChips.xml in Resources */,
 				63BF0D581A5168B900A0510C /* InfoPlist.strings in Resources */,
 				63BF0D461A50477900A0510C /* Localizable.strings in Resources */,
 				63D27B241A35CA31000EAF08 /* Images.xcassets in Resources */,
+				63BF0D741A57972400A0510C /* StonesAndChips.dat in Resources */,
+				63BF0D781A57976200A0510C /* mpah_t01.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,10 +528,14 @@
 				6387772C1A3C6F7B00F95F87 /* TextFormatter.m in Sources */,
 				63BF0D421A4D5D8C00A0510C /* MPSpinnerView.m in Sources */,
 				63BF0D5E1A5176B800A0510C /* MPRefreshController.m in Sources */,
+				63BF0D871A5798E700A0510C /* AREAGLView.mm in Sources */,
+				63BF0D7E1A5797AD00A0510C /* MPARSession.mm in Sources */,
 				638777301A3EC8CE00F95F87 /* ARViewController.mm in Sources */,
 				635F42AF1A3851F100E5E911 /* Artwork.m in Sources */,
 				63BF0D641A54172900A0510C /* MPFullscreenImageViewController.m in Sources */,
+				63BF0D841A57982E00A0510C /* MPGLShaderUtils.m in Sources */,
 				639206391A484CCA00EDE3F5 /* PFDataLoader.m in Sources */,
+				63BF0D831A57982E00A0510C /* ARUtilities.cpp in Sources */,
 				639CE53E1A4BBFDD00E01036 /* NSAttributedString+ThemeStrings.m in Sources */,
 				635F42AC1A37F15700E5E911 /* MPCellNode.m in Sources */,
 				639205B51A442A6B00EDE3F5 /* FakeDataLoader.m in Sources */,
@@ -541,7 +627,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					./vuforia/include,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = ./vuforia/lib/arm;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -576,7 +668,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					./vuforia/include,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = ./vuforia/lib/arm;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -589,12 +687,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AsyncDisplayKit\"",
+					"\"${PODS_ROOT}/Headers/Public/LoremIpsum\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					./vuforia/include,
+				);
 				INFOPLIST_FILE = MPHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					./vuforia/lib/arm,
+					"$(PROJECT_DIR)/vuforia/lib/arm",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -605,12 +716,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AsyncDisplayKit\"",
+					"\"${PODS_ROOT}/Headers/Public/LoremIpsum\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					./vuforia/include,
+				);
 				INFOPLIST_FILE = MPHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					./vuforia/lib/arm,
+					"$(PROJECT_DIR)/vuforia/lib/arm",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

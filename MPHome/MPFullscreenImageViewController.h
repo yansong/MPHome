@@ -10,6 +10,6 @@
 
 @interface MPFullscreenImageViewController : UIViewController <UIScrollViewDelegate>
 
-- (instancetype)initWithImage:(UIImage *)image;
+- (instancetype)initWithImage:(UIImage *)image Width:(NSInteger)width Height:(NSInteger)height;
 
 @end

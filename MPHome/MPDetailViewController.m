@@ -126,7 +126,7 @@ static const CGFloat kOuterHPadding = 10.0f;
 
 - (void)imageViewTapped {
     NSLog(@"Image node tapped");
-    MPFullscreenImageViewController *fullscreenVC = [[MPFullscreenImageViewController alloc]initWithImage:_imageNode.image];
+    MPFullscreenImageViewController *fullscreenVC = [[MPFullscreenImageViewController alloc]initWithImage:_imageNode.image Width:_artwork.width Height:_artwork.height];
 
     [self presentViewController:fullscreenVC animated:YES completion:nil];
 }
