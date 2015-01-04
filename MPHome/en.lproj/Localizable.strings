@@ -15,3 +15,7 @@
 "AboutText" = "Art At Home app gathered masterpieces of art history, and show the artwork in reality";
 "HelpTitle" = "Help";
 "HelpText" = "alskdjfalskdfj\ndssdfkaslkdfjskf\n\n\nalskdfjaslkdfjaslkdfja;lsfdk";
+"FeedbackTitle" = "Feedback";
+"FeedbackButtonTitle" = "Send Feedback";
+"MailSubject" = "Artwork At Home feedback";
+"MailBody" = "";
