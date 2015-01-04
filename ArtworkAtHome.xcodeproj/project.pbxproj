@@ -143,14 +143,14 @@
 		63BF0D8A1A579BB300A0510C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		63BF0D8C1A579BBA00A0510C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		63BF0D8E1A579BC500A0510C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		63D27B131A35CA31000EAF08 /* MPHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D27B131A35CA31000EAF08 /* ArtAtHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtAtHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B171A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B181A35CA31000EAF08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63D27B1A1A35CA31000EAF08 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		63D27B1B1A35CA31000EAF08 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		63D27B231A35CA31000EAF08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63D27B261A35CA31000EAF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		63D27B2C1A35CA31000EAF08 /* MPHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D27B2C1A35CA31000EAF08 /* artathome.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = artathome.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D27B311A35CA31000EAF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63D27B321A35CA31000EAF08 /* MPHomeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPHomeTests.m; sourceTree = "<group>"; };
 		874EE9DF5FE5ED714F202169 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,8 +272,8 @@
 		63D27B141A35CA31000EAF08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63D27B131A35CA31000EAF08 /* MPHome.app */,
-				63D27B2C1A35CA31000EAF08 /* MPHomeTests.xctest */,
+				63D27B131A35CA31000EAF08 /* ArtAtHome.app */,
+				63D27B2C1A35CA31000EAF08 /* artathome.temp_caseinsensitive_renameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,9 +379,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63D27B121A35CA31000EAF08 /* MPHome */ = {
+		63D27B121A35CA31000EAF08 /* ArtworkAtHome */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63D27B361A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "MPHome" */;
+			buildConfigurationList = 63D27B361A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "ArtworkAtHome" */;
 			buildPhases = (
 				F0F62B0106C1D264192CEAC6 /* Check Pods Manifest.lock */,
 				63D27B0F1A35CA31000EAF08 /* Sources */,
@@ -393,14 +393,14 @@
 			);
 			dependencies = (
 			);
-			name = MPHome;
+			name = ArtworkAtHome;
 			productName = MPHome;
-			productReference = 63D27B131A35CA31000EAF08 /* MPHome.app */;
+			productReference = 63D27B131A35CA31000EAF08 /* ArtAtHome.app */;
 			productType = "com.apple.product-type.application";
 		};
-		63D27B2B1A35CA31000EAF08 /* MPHomeTests */ = {
+		63D27B2B1A35CA31000EAF08 /* ArtworkAtHomeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63D27B391A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "MPHomeTests" */;
+			buildConfigurationList = 63D27B391A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "ArtworkAtHomeTests" */;
 			buildPhases = (
 				63D27B281A35CA31000EAF08 /* Sources */,
 				63D27B291A35CA31000EAF08 /* Frameworks */,
@@ -411,9 +411,9 @@
 			dependencies = (
 				63D27B2E1A35CA31000EAF08 /* PBXTargetDependency */,
 			);
-			name = MPHomeTests;
+			name = ArtworkAtHomeTests;
 			productName = MPHomeTests;
-			productReference = 63D27B2C1A35CA31000EAF08 /* MPHomeTests.xctest */;
+			productReference = 63D27B2C1A35CA31000EAF08 /* artathome.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -434,7 +434,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63D27B0E1A35CA31000EAF08 /* Build configuration list for PBXProject "MPHome" */;
+			buildConfigurationList = 63D27B0E1A35CA31000EAF08 /* Build configuration list for PBXProject "ArtworkAtHome" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -448,8 +448,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63D27B121A35CA31000EAF08 /* MPHome */,
-				63D27B2B1A35CA31000EAF08 /* MPHomeTests */,
+				63D27B121A35CA31000EAF08 /* ArtworkAtHome */,
+				63D27B2B1A35CA31000EAF08 /* ArtworkAtHomeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -557,7 +557,7 @@
 /* Begin PBXTargetDependency section */
 		63D27B2E1A35CA31000EAF08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 63D27B121A35CA31000EAF08 /* MPHome */;
+			target = 63D27B121A35CA31000EAF08 /* ArtworkAtHome */;
 			targetProxy = 63D27B2D1A35CA31000EAF08 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -706,7 +706,8 @@
 					./vuforia/lib/arm,
 					"$(PROJECT_DIR)/vuforia/lib/arm",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArtworkAtHome;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -735,7 +736,8 @@
 					./vuforia/lib/arm,
 					"$(PROJECT_DIR)/vuforia/lib/arm",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArtworkAtHome;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -753,7 +755,7 @@
 				);
 				INFOPLIST_FILE = MPHomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = artathome.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPHome.app/MPHome";
 			};
 			name = Debug;
@@ -768,7 +770,7 @@
 				);
 				INFOPLIST_FILE = MPHomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = artathome.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPHome.app/MPHome";
 			};
 			name = Release;
@@ -776,7 +778,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63D27B0E1A35CA31000EAF08 /* Build configuration list for PBXProject "MPHome" */ = {
+		63D27B0E1A35CA31000EAF08 /* Build configuration list for PBXProject "ArtworkAtHome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D27B341A35CA31000EAF08 /* Debug */,
@@ -785,7 +787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63D27B361A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "MPHome" */ = {
+		63D27B361A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "ArtworkAtHome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D27B371A35CA31000EAF08 /* Debug */,
@@ -794,7 +796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63D27B391A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "MPHomeTests" */ = {
+		63D27B391A35CA31000EAF08 /* Build configuration list for PBXNativeTarget "ArtworkAtHomeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D27B3A1A35CA31000EAF08 /* Debug */,
