@@ -9,17 +9,13 @@
 #import "MPAboutViewController.h"
 #import "TextFormatter.h"
 
-@interface MPAboutViewController () 
+static const CGFloat kCellMargin = 10.0f;
 
-@property (nonatomic, strong) UITableViewCell *aboutCell;
-@property (nonatomic, strong) UITableViewCell *helpCell;
-
-@property (nonatomic, strong) UITextView *aboutTextView;
-@property (nonatomic, strong) UITextView *helpTextView;
-
-@property (nonatomic) CGFloat aboutViewHeight;
-@property (nonatomic) CGFloat helpViewHeight;
-
+@interface MPAboutViewController () {
+    NSMutableArray *_contentTitles;
+    NSMutableArray *_contentCells;
+    NSMutableArray *_cellHeights;
+}
 @end
 
 @implementation MPAboutViewController
@@ -27,35 +23,41 @@
 - (void)loadView {
     self.tableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
     self.title = NSLocalizedString(@"About", "About title");
+
+    [self buildTitles];
+    [self buildContentCells];
+}
+
+- (void)buildTitles {
+    _contentTitles = [[NSMutableArray alloc]initWithObjects:NSLocalizedString(@"AboutTitle", @"About Title"), NSLocalizedString(@"HelpTitle", @"Help Title"), nil];
+}
+
+- (void)buildContentCells {
+
+    NSArray *contents = [NSArray arrayWithObjects:NSLocalizedString(@"AboutText", @"About Text"),
+                         NSLocalizedString(@"HelpText", @"Help Text"), nil];
     
-    NSLog(@"size %f, %f", self.tableView.frame.size.width, self.tableView.frame.size.height);
-    CGRect frame;
+    _contentCells = [[NSMutableArray alloc]init];
+    _cellHeights = [[NSMutableArray alloc]init];
     
-    // construct about cell, section 0, row 0
-    self.aboutCell = [[UITableViewCell alloc]init];
-    self.aboutTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    frame = self.aboutTextView.frame;
-    self.aboutTextView.attributedText = [TextFormatter formatHelpText:NSLocalizedString(@"AboutText", @"About text")];
-    self.aboutViewHeight= [TextFormatter heightForText:self.aboutTextView.attributedText Width:[[UIScreen mainScreen] applicationFrame].size.width];
-    frame.size.height = self.aboutViewHeight + 10;
-    self.aboutTextView.frame = frame;
-    self.aboutTextView.editable = NO;
+    CGFloat cellWidth = [[UIScreen mainScreen] applicationFrame].size.width;
     
-    [self.aboutCell addSubview:self.aboutTextView];
+    for (NSInteger i = 0; i < contents.count; i++) {
+        UITableViewCell *cell = [[UITableViewCell alloc]init];
+        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, cellWidth, 100)];
+        CGRect cellFrame = textView.frame;
+        textView.attributedText = [TextFormatter formatHelpText:[contents objectAtIndex:i]];
+        CGFloat textHeight = [TextFormatter heightForText:textView.attributedText Width:cellWidth];
+        cellFrame.size.height = textHeight + kCellMargin;
+        textView.frame = cellFrame;
+        textView.editable = NO;
+        [cell addSubview:textView];
+        
+        [_contentCells addObject:cell];
+        NSNumber *height = [NSNumber numberWithFloat:textHeight + kCellMargin];
+        [_cellHeights addObject:height];
+    }
     
-    // construct help cell, section 1, row 0
-    self.helpCell = [[UITableViewCell alloc]init];
-    self.helpTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    self.helpTextView.attributedText = [TextFormatter formatHelpText:NSLocalizedString(@"HelpText", @"Help text")];
-//    NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:@"Google"];
-//    [str addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: NSMakeRange(0, str.length)];
-//    yourTextField.attributedText = str;
-    self.helpViewHeight = [TextFormatter heightForText:self.helpTextView.attributedText Width:[[UIScreen mainScreen] applicationFrame].size.width];
-    frame.size.height = self.helpViewHeight + 10;
-    self.helpTextView.frame = frame;
-    self.helpTextView.editable = NO;
-    
-    [self.helpCell addSubview:self.helpTextView];
 }
 
 - (void)viewDidLoad {
@@ -77,7 +79,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return [_contentCells count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -86,97 +88,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0:
-            return self.aboutViewHeight + 10;
-            break;
-        case 1:
-            return self.helpViewHeight + 10;
-            break;
-        default:
-            break;
-    };
-    return 0;
+    return [_cellHeights[indexPath.section] floatValue];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-                case 0:
-                    return self.aboutCell;
-                    break;
-                    
-                default:
-                    break;
-            }
-            break;
-        case 1:
-            switch (indexPath.row) {
-                case 0:
-                    return self.helpCell;
-                    break;
-                    
-                default:
-                    break;
-            }
-        default:
-            break;
-    }
-    
-    return nil;
+    return [_contentCells objectAtIndex:indexPath.section];
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - UITableViewDelegate
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return NSLocalizedString(@"AboutTitle", "About title");
-            break;
-        case 1:
-            return NSLocalizedString(@"HelpTitle", "Help title");
-            break;
-            
-        default:
-            break;
-    }
-    return nil;
+    return [_contentTitles objectAtIndex:section];
 }
 
 @end
