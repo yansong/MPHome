@@ -15,3 +15,7 @@
 "AboutText" = "\t家有名画收集了艺术史上最有名的作品，并运用增强现实技术进行实景展示。我们会定期更新名画作品库。";
 "HelpTitle" = "使用帮助";
 "HelpText" = "1. 在浏览页面里浏览\n2. 点击进入每一副画的详细介绍\n3. 在详细介绍中可开启实景功能\n4. 从www.ihomedec.com下载打印标记图，贴在您想要放置的地方\n5. 欣赏名画在你家里的效果";
+"FeedbackTitle" = "意见反馈";
+"FeedbackButtonTitle" = "发送反馈";
+"MailSubject" = "家有名画意见反馈";
+"MailBody" = "";
