@@ -94,11 +94,13 @@ static const CGFloat kCellMargin = 10.0f;
 
 - (void)sendMail:(id)sender {
     _mailComposer = [[MFMailComposeViewController alloc]init];
-    _mailComposer.mailComposeDelegate = self;
-    [_mailComposer setToRecipients:[NSArray arrayWithObject:@"support@ihomedec.com"]];
-    [_mailComposer setSubject:NSLocalizedString(@"MailSubject", @"Feedback mail subject")];
-    [_mailComposer setMessageBody:NSLocalizedString(@"MailBody", @"Feedback mail body") isHTML:NO];
-    [self presentViewController:_mailComposer animated:YES completion:nil];
+    if (_mailComposer) {
+        _mailComposer.mailComposeDelegate = self;
+        [_mailComposer setToRecipients:[NSArray arrayWithObject:@"support@ihomedec.com"]];
+        [_mailComposer setSubject:NSLocalizedString(@"MailSubject", @"Feedback mail subject")];
+        [_mailComposer setMessageBody:NSLocalizedString(@"MailBody", @"Feedback mail body") isHTML:NO];
+        [self presentViewController:_mailComposer animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Table view data source
