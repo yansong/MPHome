@@ -8,15 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol DetailViewControllerDelegate <NSObject>
-
-- (void)didDismissDetailViewController;
-
-@end
-
 @interface MPDetailViewController : UIViewController
 
-@property (nonatomic, weak) id<DetailViewControllerDelegate> delegate;
 - (instancetype)initWithItemId:(NSString *)itemId;
 
 @end

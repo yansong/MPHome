@@ -18,7 +18,7 @@
 
 static const CGFloat kOuterHPadding = 10.0f;
 
-@interface MPDetailViewController()<ASNetworkImageNodeDelegate>
+@interface MPDetailViewController()<ASNetworkImageNodeDelegate, MPFullscreenViewControllerDelegate>
 {
     Artwork* _artwork;
     UIScrollView *_scrollview;
@@ -28,6 +28,7 @@ static const CGFloat kOuterHPadding = 10.0f;
     CGRect _frameRect;
     MPSpinnerView *_spinner;
 }
+
 @end
 
 @implementation MPDetailViewController
@@ -46,7 +47,7 @@ static const CGFloat kOuterHPadding = 10.0f;
         _frameRect.size.height -= 44.0f;
         
         _contentWidth = _frameRect.size.width;
-        //_contentHeight = 0; // we start at 0
+        _contentHeight = 0; // we start at 0
         
         [self buildDetailView];
     }];
@@ -55,30 +56,41 @@ static const CGFloat kOuterHPadding = 10.0f;
     return self;
 }
 
-//- (BOOL)prefersStatusBarHidden {
-//    return NO;
-//}
+- (void)viewDidLoad {
+    NSLog(@"ViewDidLoad");
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //NSLog(@"viewWillAppear");
+    // ???: Don't know why, but when returning from fullscreen view, the scroll view moves down 64px, and heigh decreased same
+    CGRect rect = _scrollview.frame;
+    //NSLog(@"Scrollview %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    rect.size.height += rect.origin.y;
+    rect.origin.y = 0;
+    _scrollview.frame = rect;
+}
 
 - (void)buildDetailView {
     _scrollview = [[UIScrollView alloc] initWithFrame:_frameRect];
     _scrollview.contentSize = _frameRect.size;
     _scrollview.backgroundColor = [UIColor whiteColor];
     
-    // reserve the navigation and status bar space
-    //_contentHeight = 44.0;
-    
     self.title = _artwork.title;
     
     [self.view addSubview:_scrollview];
     [self addImageView];
+    
     [self addInfoBlockWithTitle:NSLocalizedString(@"Artist", "Artist name") Content:_artwork.artistName];
     [self addSeparatorAt:_contentHeight++];
-    [self addInfoBlockWithTitle:NSLocalizedString(@"Size", "Artwork size") Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Size", "Artwork size")
+                        Content:[NSString stringWithFormat:@"%@ x %@", @(_artwork.width), @(_artwork.height)]];
     [self addSeparatorAt:_contentHeight++];
+    
     [self addInfoBlockWithTitle:NSLocalizedString(@"Year", "Created year") Content:_artwork.createYear];
     [self addSeparatorAt:_contentHeight++];
-    [self addInfoBlockWithTitle:NSLocalizedString(@"Description", "Description of the artwork") Content:_artwork.theDescription];
+    [self addInfoBlockWithTitle:NSLocalizedString(@"Description", "Description of the artwork")
+                        Content:_artwork.theDescription];
     
     // adjust scrollview height
     _scrollview.contentSize = CGSizeMake(_contentWidth, _contentHeight);
@@ -120,25 +132,21 @@ static const CGFloat kOuterHPadding = 10.0f;
     [_scrollview addSubview:separator];
 }
 
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
 
+
 - (void)imageViewTapped {
     NSLog(@"Image node tapped");
     MPFullscreenImageViewController *fullscreenVC = [[MPFullscreenImageViewController alloc]initWithImage:_imageNode.image];
+    fullscreenVC.delegate = self;
 
     [self presentViewController:fullscreenVC animated:YES completion:nil];
-}
-
-- (void)dismiss:(id)sender
-{
-    if (_delegate) {
-        [_delegate didDismissDetailViewController];
-    }
-    else {
-        [self dismissViewControllerAnimated:NO completion:NULL];
-    }
 }
 
 # pragma mark - ASNetworkImageNodeDelegate
@@ -151,8 +159,12 @@ static const CGFloat kOuterHPadding = 10.0f;
     tapRecognizer.numberOfTapsRequired = 1;
     tapRecognizer.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:tapRecognizer];
+}
 
-    //[self addARButton];
+#pragma mark - MPFullscreenViewControllerDelegate
+- (void)didDismissFullscreenViewController {
+    [self dismissViewControllerAnimated:NO completion:NULL];
+    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 @end

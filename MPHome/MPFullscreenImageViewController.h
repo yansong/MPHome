@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MPFullscreenViewControllerDelegate <NSObject>
+
+- (void)didDismissFullscreenViewController;
+
+@end
+
+
 @interface MPFullscreenImageViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic, weak) id<MPFullscreenViewControllerDelegate> delegate;
 - (instancetype)initWithImage:(UIImage *)image;
 
 @end
