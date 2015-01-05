@@ -59,18 +59,29 @@ static const CGFloat kOuterHPadding = 10.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+
     NSLog(@"ViewDidLoad");
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    //NSLog(@"viewWillAppear");
+- (void)adjustView {
     // ???: Don't know why, but when returning from fullscreen view, the scroll view moves down 64px, and heigh decreased same
     CGRect rect = _scrollview.frame;
     //NSLog(@"Scrollview %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
     rect.size.height += rect.origin.y;
     rect.origin.y = 0;
     _scrollview.frame = rect;
+}
+
+- (void)appDidEnterForeground:(NSNotification *)notification {
+    NSLog(@"Entered foreground");
+    [self adjustView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //NSLog(@"viewWillAppear");
+    [self adjustView];
 }
 
 - (void)buildDetailView {
@@ -149,6 +160,14 @@ static const CGFloat kOuterHPadding = 10.0f;
     fullscreenVC.delegate = self;
 
     [self presentViewController:fullscreenVC animated:YES completion:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 # pragma mark - ASNetworkImageNodeDelegate
