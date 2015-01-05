@@ -19,9 +19,6 @@ static NSInteger _itemRetrieved = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[PFDataLoader alloc]init];
-        // set parse keys
-        [Parse setApplicationId:@"SKAMXdtfD893Zkm7YyN2gbSouWFMJdjLtIJifw1c"
-                      clientKey:@"UXpvzE96IrtMTOin9YISbfj2gdxGB3SUsSdEl0Qk"];
     });
     return _sharedInstance;
 }

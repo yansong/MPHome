@@ -11,6 +11,8 @@
 #import "UIColor+ThemeColors.h"
 #import "MPPortaitNavigationController.h"
 
+#import <Parse/Parse.h>
+
 @interface AppDelegate ()
 
 @end
@@ -19,6 +21,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Parse setApplicationId:@"SKAMXdtfD893Zkm7YyN2gbSouWFMJdjLtIJifw1c"
+                  clientKey:@"UXpvzE96IrtMTOin9YISbfj2gdxGB3SUsSdEl0Qk"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MPBrowseViewController *browseViewController = [MPBrowseViewController new];

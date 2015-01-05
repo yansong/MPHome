@@ -57,6 +57,8 @@ static const CGFloat kOuterHPadding = 10.0f;
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     NSLog(@"ViewDidLoad");
 }
 
