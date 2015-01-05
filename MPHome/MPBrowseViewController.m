@@ -19,7 +19,7 @@
 
 #import "MPAboutViewController.h"
 
-@interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate, DetailViewControllerDelegate>
+@interface MPBrowseViewController () <ASTableViewDataSource, ASTableViewDelegate>
 {
     ASTableView *_tableView;
     NSMutableArray *_masterpieces;
@@ -145,7 +145,6 @@
     
     Artwork *artwork = [[Artwork alloc]initWithPFObject:[_masterpieces objectAtIndex:indexPath.row]];
     MPDetailViewController *detailView = [[MPDetailViewController alloc] initWithItemId:artwork.artworkId];
-    detailView.delegate = self;
     
     //[self presentViewController:detailView animated:NO completion:nil];
     [self.navigationController pushViewController:detailView animated:YES];
@@ -155,11 +154,6 @@
     if (indexPath.row == _masterpieces.count - 1 && !_reachedEnd) {
         [self loadMoreData];
     }
-}
-
-#pragma mark - DetailViewControllerDelegate
-- (void)didDismissDetailViewController {
-    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 @end

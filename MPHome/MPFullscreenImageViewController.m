@@ -133,6 +133,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)addDismissButton {
     UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
     dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -188,7 +192,12 @@
 }
 
 - (void)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (_delegate) {
+        [_delegate didDismissFullscreenViewController];
+    }
+    else {
+        [self dismissViewControllerAnimated:NO completion:NULL];
+    }
 }
 
 
@@ -199,10 +208,19 @@
     [self presentViewController:arViewController animated:NO completion:nil];
 }
 
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
 - (BOOL)shouldAutorotate {
     // not support for now
     return NO;
 }
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
