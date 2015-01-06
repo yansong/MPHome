@@ -13,7 +13,7 @@
 
 static const CGFloat kOuterHPadding = 10.0f;
 static const CGFloat kOuterVPadding = 10.0f;
-//static const CGFloat kInnerPadding = 10.0f;
+static const CGFloat kTextNodeHeight = 74.0f;
 
 @interface MPCellNode ()
 {
@@ -54,15 +54,15 @@ static const CGFloat kOuterVPadding = 10.0f;
 #pragma mark - ASDisplayNode overrides
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
     _cellSize = constrainedSize;
-    CGSize textSize = CGSizeMake(constrainedSize.width, 60);
+    //CGSize textSize = CGSizeMake(constrainedSize.width, 60);
     
-    return CGSizeMake(constrainedSize.width, (float)_artwork.height/_artwork.width * _cellSize.width + textSize.height);
+    return CGSizeMake(constrainedSize.width, (float)_artwork.height/_artwork.width * _cellSize.width + kTextNodeHeight + 2 * kOuterHPadding);
 }
 
 - (void)layout {
     _imageNode.frame = CGRectMake(0, 0, _cellSize.width, (float)_artwork.height/_artwork.width * _cellSize.width);
     //CGSize textSize = _textNode.calculatedSize;
-    _textNode.frame = CGRectMake(kOuterHPadding, _imageNode.frame.size.height + kOuterVPadding, _cellSize.width - 2 * kOuterHPadding, 48);
+    _textNode.frame = CGRectMake(kOuterHPadding, _imageNode.frame.size.height + kOuterVPadding, _cellSize.width - 2 * kOuterHPadding, kTextNodeHeight);
 }
 
 @end
