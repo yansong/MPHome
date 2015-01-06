@@ -121,11 +121,27 @@ namespace {
 
 - (void)setupArImage:(CGImageRef)image width:(NSInteger)width height:(NSInteger)height {
     _imageRef = image;
+    // 247 and 185 is from mpath_t01.xml, the actual dimension of the target paper
     _imageWidth = width / 297.0 * 247;
     _imageHeight = height / 210.0 * 185;
     NSLog(@"Setup AR image: image width %d, height %d", _imageWidth, _imageHeight);
     for (int i = 0; i < 12; i++) {
-        _imageVertices[i] = quadVertices[i] * width / 247.0;
+        // 4 coords, {x, y, z}, so i % 3 result: 0->x, 1->y, 2->z
+        switch (i % 3) {
+            case 0:
+                _imageVertices[i] = quadVertices[i] * width / 247.0;
+                break;
+            case 1:
+                _imageVertices[i] = quadVertices[i] * height / 185.0;
+                break;
+            case 2:
+                _imageVertices[i] = 0.0f;
+                break;
+            
+            default:
+                break;
+        }
+       // _imageVertices[i] = quadVertices[i] * width / 247.0;
     }
 
     NSLog(@"Loading texture");
