@@ -12,9 +12,9 @@
 "Browse" = "Masterpieces";
 "About" = "About";
 "AboutTitle" = "About";
-"AboutText" = "Art At Home app gathered masterpieces of art history, and show the artwork in reality";
+"AboutText" = "This App is for people who love art like us. You may have already seen the masterpieces gathered here in books or on screen. But have you ever imagined just standing in front of the painting, feel it in your own room? We use augmented reality technology to make it true. \nEnjoy!";
 "HelpTitle" = "Help";
-"HelpText" = "alskdjfalskdfj\ndssdfkaslkdfjskf\n\n\nalskdfjaslkdfjaslkdfja;lsfdk";
+"HelpText" = "So you have seen the artworks we collected: the image, artist, description and so on. And we'll keep adding. Now only one extra step to experience more:\n\t1. Please open web page http://ar.ihomedec.com. In the web page please open or download the marker file 'marker.pdf'.\n\t2. Print the file to A4 paper and put it to any place you'd like to.\n\t3. Have you seen the image button on the up left corner of the artwork, press it.\n\t4. See what happens when you capture the marker paper through your phone camera.";
 "FeedbackTitle" = "Feedback";
 "FeedbackButtonTitle" = "Send Feedback";
 "MailSubject" = "Artwork At Home feedback";
