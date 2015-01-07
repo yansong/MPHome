@@ -51,7 +51,7 @@
     self.imageView.frame = (CGRect) {.origin = CGPointMake(0.0f, 0.0f), .size = _image.size};
     [self.scrollView addSubview:self.imageView];
     
-    self.scrollView.contentSize = _image.size;
+    //self.scrollView.contentSize = _image.size;
     self.scrollView.delegate = self;
     
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
@@ -72,6 +72,9 @@
     [super viewWillAppear:animated];
     
     CGRect scrollViewFrame = self.view.frame;
+
+    // ???: set contentSize here, otherwise when back from AR view, image turns to max
+    self.scrollView.contentSize = _image.size;
     CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
     CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
     CGFloat minScale = MIN(scaleWidth, scaleHeight);
@@ -235,6 +238,8 @@
 #pragma mark - ARViewControllerDelegate
 - (void)didDismissARViewController {
     [self dismissViewControllerAnimated:NO completion:nil];
+    //[self.scrollView setZoomScale:self.scrollView.zoomScale animated:YES];
+    [self.view setNeedsLayout];
 }
 
 @end
