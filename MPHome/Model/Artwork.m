@@ -44,8 +44,12 @@
 
 - (NSString *)dataForLocalizedField:(NSString *)field Data:(PFObject *)data{
     PFObject *obj = [data objectForKey:field];
-
-    return [obj objectForKey:[[NSLocale currentLocale]localeIdentifier]];
+    NSString *locale = @"en_US";
+    if ([[[NSLocale currentLocale]localeIdentifier] hasPrefix:@"zh_"]) {
+        locale = @"zh_CN";
+    }
+    
+    return [obj objectForKey:locale];
 }
 
 @end

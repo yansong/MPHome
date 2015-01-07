@@ -42,6 +42,7 @@ static NSInteger _itemRetrieved = 0;
 
     query.limit = [self itemsPerRequest];
     query.skip = _itemRetrieved;
+    [query orderByDescending:@"uid"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -50,6 +51,7 @@ static NSInteger _itemRetrieved = 0;
             NSMutableArray *artworks = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
                 [artworks addObject:object];
+                NSLog(@"uid %@", [object objectForKey:@"uid"]);
             }
             completion(artworks, error);
         }
