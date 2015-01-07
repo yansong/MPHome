@@ -38,7 +38,7 @@
 }
 
 + (NSAttributedString *)formatHelpText:(NSString *)text {
-    UIFont *font = [UIFont systemFontOfSize:16.0f];
+    UIFont *font = [UIFont systemFontOfSize:14.0f];
     NSDictionary *attrDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:text attributes:attrDictionary];
     return string;
