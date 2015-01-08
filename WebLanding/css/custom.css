@@ -1,0 +1,217 @@
+/*!
+ * Custom Spaceship Styles v1.0.0
+ * Copyright 2014-2015 Spaceship
+ */
+html {
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	background: #4cc1d3 url('/images/bg.jpg') bottom center no-repeat;
+	-webkit-font-smoothing: antialiased;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.container {
+	max-width: 970px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+	.row {
+		margin-top: 60px;
+	}
+		.row:first-child {
+			margin-top: 0;
+		}
+
+	.col {
+		margin-top: 60px;
+	}
+		.col:first-child {
+			margin-top: 0;
+		}
+
+.section {
+	
+}
+	
+	.section .container {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+
+.footer {
+}
+	
+	.footer .container {
+		padding-top: 60px;
+		margin-bottom: 60px;
+	}
+
+
+.section:before,
+.section:after,
+.footer:before,
+.footer:after {
+	content: "";
+	display: table;
+}
+.section:after,
+.footer:after {
+	clear: both;
+}
+.section,
+.footer {
+	zoom: 1;
+}
+
+
+.p {
+	margin: 0 0 10px 0;
+	font-size: 18px;
+	line-height: 1.6;
+	font-weight: 300;
+}
+
+p,
+ul,
+ol,
+dl,
+menu,
+label {
+	font-size: 18px;
+	line-height: 1.6;
+	font-weight: 300;
+}
+	p,
+	.p {
+		margin-bottom: 20px;
+	}
+	
+		.footer p {
+			font-size: 16px;
+			margin-bottom: 5px;
+		}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-weight: 700;
+}
+	h1:first-child,
+	h2:first-child,
+	h3:first-child,
+	h4:first-child,
+	h5:first-child,
+	h6:first-child {
+		margin-top: 0;
+	}
+	
+	h1,
+	.h1 {
+		margin-top: 40px;
+		margin-bottom: 25px;
+	}
+
+
+a,
+a:link,
+a:visited {
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid;
+	border-color: #c1e5e1;
+}
+	a:hover {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1px solid;
+		border-color: #fff;
+	}
+
+
+/* Must be separate from ::selection */
+::-moz-selection {
+	background: #4cc1d3;
+}
+
+/* Must be separate from ::-moz-selection */
+::selection {
+	background: #4cc1d3;
+}
+
+
+hr {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+img {
+	max-width: 100%;
+}
+	a.img-link,
+	a.img-link:link,
+	a.img-link:visited {
+		border-bottom: none;
+	}
+		a.img-link:hover {
+			border-bottom: none;
+		}
+
+
+.page-header {
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+}
+	.page-header:first-child {
+		margin-top: 0;
+	}
+
+
+.content-call-to-action {
+	margin-top: 40px;
+}
+
+
+
+@media (min-width: 768px) {
+	
+	.col {
+		margin-top: 0;
+	}
+	
+	.section .container {
+		margin-top: 100px;
+		margin-bottom: 60px;
+	}
+	
+	#section-hero .col-sm-6:first-child {
+		margin-top: 30px;
+	}
+	
+}
+
+@media (min-width: 992px) {
+	
+	#section-hero .col-sm-6:first-child {
+		margin-top: 50px;
+	}
+	
+}
