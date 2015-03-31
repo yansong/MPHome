@@ -120,7 +120,7 @@ namespace {
 {
     // Background thread must have its own autorelease pool
     @autoreleasepool {
-        QCAR::setInitParameters(mQCARInitFlags);
+        QCAR::setInitParameters(mQCARInitFlags, "__replace__with__your__key__");
         
         // QCAR::init() will return positive numbers up to 100 as it progresses
         // towards success.  Negative numbers indicate error conditions

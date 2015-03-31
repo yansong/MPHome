@@ -202,7 +202,7 @@ namespace {
         const QCAR::TrackableResult *result = state.getTrackableResult(i);
         const QCAR::Trackable &trackable = result->getTrackable();
         
-        QCAR::Vec2F targetSize = ((QCAR::ImageTarget *)&trackable)->getSize();
+        QCAR::Vec3F targetSize = ((QCAR::ImageTarget *)&trackable)->getSize();
         
         QCAR::Matrix44F modelViewMatrix = QCAR::Tool::convertPose2GLMatrix(result->getPose());
         QCAR::Matrix44F modelViewProjection;

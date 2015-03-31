@@ -9,7 +9,7 @@
 #import "ARViewController.h"
 #import <QCAR/QCAR.h>
 #import <QCAR/TrackerManager.h>
-#import <QCAR/ImageTracker.h>
+#import <QCAR/ObjectTracker.h>
 #import <QCAR/Trackable.h>
 #import <QCAR/DataSet.h>
 #import "AREAGLView.h"
@@ -179,18 +179,18 @@
     // Initialize the image or marker tracker
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
     
-    QCAR::Tracker *trackerBase = trackerManager.initTracker(QCAR::ImageTracker::getClassType());
+    QCAR::Tracker *trackerBase = trackerManager.initTracker(QCAR::ObjectTracker::getClassType());
     if (trackerBase == NULL) {
-        NSLog(@"Failed to initialize ImageTracker.");
+        NSLog(@"Failed to initialize ObjectTracker.");
         return NO;
     }
-    NSLog(@"Successfully initialized ImageTracker.");
+    NSLog(@"Successfully initialized ObjectTracker.");
     return YES;
 }
 
 - (BOOL)doLoadTrackersData {
     // MARK: Load tracker data file
-    _dataSetStones = [self loadImageTrackerDataSet:@"mpath_t02.xml"];
+    _dataSetStones = [self loadObjectTrackerDataSet:@"mpath_t02.xml"];
     
     if (_dataSetStones == NULL) {
         NSLog(@"Failed to load datasets.");
@@ -206,7 +206,7 @@
 
 - (BOOL)doStartTrackers {
     QCAR::TrackerManager& trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::Tracker *tracker = trackerManager.getTracker(QCAR::ImageTracker::getClassType());
+    QCAR::Tracker *tracker = trackerManager.getTracker(QCAR::ObjectTracker::getClassType());
     if (tracker == 0) {
         return NO;
     }
@@ -218,7 +218,7 @@
 
 - (BOOL)doStopTrackers {
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::Tracker *tracker = trackerManager.getTracker(QCAR::ImageTracker::getClassType());
+    QCAR::Tracker *tracker = trackerManager.getTracker(QCAR::ObjectTracker::getClassType());
     
     if (NULL != tracker) {
         tracker->stop();
@@ -237,10 +237,10 @@
     
     // get the image tracker
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::ImageTracker *imageTracker = static_cast<QCAR::ImageTracker *>(trackerManager.getTracker(QCAR::ImageTracker::getClassType()));
+    QCAR::ObjectTracker *objectTracker = static_cast<QCAR::ObjectTracker *>(trackerManager.getTracker(QCAR::ObjectTracker::getClassType()));
     
     // destroy the data set
-    if (!imageTracker->destroyDataSet(_dataSetStones)) {
+    if (!objectTracker->destroyDataSet(_dataSetStones)) {
         NSLog(@"Failed to destroy data set stones.");
     }
     
@@ -257,19 +257,19 @@
 }
 
 #pragma mark - Private functions
-- (QCAR::DataSet *)loadImageTrackerDataSet:(NSString *)dataFile {
-    NSLog(@"loadImageTrackerDataSet (%@)", dataFile);
+- (QCAR::DataSet *)loadObjectTrackerDataSet:(NSString *)dataFile {
+    NSLog(@"loadObjectTrackerDataSet (%@)", dataFile);
     QCAR::DataSet *dataSet = NULL;
     
     // Get the QCAR tracker manager image tracker
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::ImageTracker *imageTracker = static_cast<QCAR::ImageTracker *>(trackerManager.getTracker(QCAR::ImageTracker::getClassType()));
+    QCAR::ObjectTracker *objectTracker = static_cast<QCAR::ObjectTracker *>(trackerManager.getTracker(QCAR::ObjectTracker::getClassType()));
     
-    if (NULL == imageTracker) {
-        NSLog(@"ERROR: failed to get the ImageTracker from the tracker manager.");
+    if (NULL == objectTracker) {
+        NSLog(@"ERROR: failed to get the ObjectTracker from the tracker manager.");
     }
     else {
-        dataSet = imageTracker->createDataSet();
+        dataSet = objectTracker->createDataSet();
         
         if (NULL != dataSet) {
             NSLog(@"INFO: successfully loaded data set.");
@@ -277,7 +277,7 @@
             // Load the data set from the app's resources location
             if (!dataSet->load([dataFile cStringUsingEncoding:NSASCIIStringEncoding], QCAR::STORAGE_APPRESOURCE)) {
                 NSLog(@"ERROR: failed to load data set.");
-                imageTracker->destroyDataSet(dataSet);
+                objectTracker->destroyDataSet(dataSet);
                 dataSet = NULL;
             }
         }
@@ -298,14 +298,14 @@
     
     // Get the image tracker
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::ImageTracker *imageTracker = static_cast<QCAR::ImageTracker *>(trackerManager.getTracker(QCAR::ImageTracker::getClassType()));
+    QCAR::ObjectTracker *objectTracker = static_cast<QCAR::ObjectTracker *>(trackerManager.getTracker(QCAR::ObjectTracker::getClassType()));
     
-    if (imageTracker == NULL) {
-        NSLog(@"Failed to unload tracking data set because the ImageTracker has not been initialized.");
+    if (objectTracker == NULL) {
+        NSLog(@"Failed to unload tracking data set because the ObjectTracker has not been initialized.");
     }
     else {
         // Activate the data set
-        if (!imageTracker->activateDataSet(theDataSet)) {
+        if (!objectTracker->activateDataSet(theDataSet)) {
             NSLog(@"Failed to activate data set.");
         }
         else {
@@ -336,14 +336,14 @@
     
     // get the image tracker:
     QCAR::TrackerManager &trackerManager = QCAR::TrackerManager::getInstance();
-    QCAR::ImageTracker *imageTracker = static_cast<QCAR::ImageTracker *>(trackerManager.getTracker(QCAR::ImageTracker::getClassType()));
+    QCAR::ObjectTracker *objectTracker = static_cast<QCAR::ObjectTracker *>(trackerManager.getTracker(QCAR::ObjectTracker::getClassType()));
     
-    if (imageTracker == NULL) {
-        NSLog(@"Failed to unload tracking data set because the ImageTracker has not been initialized.");
+    if (objectTracker == NULL) {
+        NSLog(@"Failed to unload tracking data set because the ObjectTracker has not been initialized.");
     }
     else {
         // Deactivate the data set
-        if (!imageTracker->deactivateDataSet(theDataSet)) {
+        if (!objectTracker->deactivateDataSet(theDataSet)) {
             NSLog(@"Failed to deactivate data set.");
         }
         else {
